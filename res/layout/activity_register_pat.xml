@@ -1,0 +1,146 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.gaitanalysis.RegisterPat" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imageView1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="23dp"
+        android:text="个 人 信 息"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <ImageButton
+        android:id="@+id/imageButton1"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/home"
+        android:scaleType="fitXY"
+        android:src="@drawable/home" />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageButton1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="14dp"
+        android:src="@drawable/line1" />
+
+    <Button
+        android:id="@+id/regpatnext"
+        android:layout_width="90dp"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="58dp"
+        android:background="@color/darkblue"
+        android:text="下一步" />
+
+    <EditText
+        android:id="@+id/peragetext"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/perageview"
+        android:layout_alignBottom="@+id/perageview"
+        android:layout_toRightOf="@+id/textView3"
+        android:background="@drawable/text_border"
+        android:ems="20"
+        android:hint="请输入年龄"
+        android:singleLine="true" />
+
+    <TextView
+        android:id="@+id/perageview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView3"
+        android:layout_below="@+id/imageView1"
+        android:layout_marginTop="57dp"
+        android:text="年龄"
+        android:textSize="@dimen/abc_action_bar_title_text_size" />
+
+    <TextView
+        android:id="@+id/perheightveiw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/perageview"
+        android:layout_marginTop="15dp"
+        android:layout_toLeftOf="@+id/textView1"
+        android:text="身高(cm)"
+        android:textSize="@dimen/abc_action_bar_title_text_size" />
+
+    <EditText
+        android:id="@+id/perheighttext"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/perheightveiw"
+        android:layout_alignBottom="@+id/perheightveiw"
+        android:layout_alignLeft="@+id/peragetext"
+        android:background="@drawable/text_border"
+        android:ems="20"
+        android:hint="请输入身高(cm)"
+        android:singleLine="true" >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView3"
+        android:layout_centerVertical="true"
+        android:text="性别"
+        android:textSize="@dimen/abc_action_bar_title_text_size" />
+
+    <RadioButton
+        android:id="@+id/radioButton1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView2"
+        android:layout_alignBottom="@+id/textView2"
+        android:layout_toRightOf="@+id/textView3"
+        android:text="男" />
+
+    <EditText
+        android:id="@+id/EditText01"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/radioButton1"
+        android:layout_below="@+id/radioButton1"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/text_border"
+        android:ems="20"
+        android:hint="请输入体重(kg)"
+        android:singleLine="true" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/EditText01"
+        android:layout_alignBottom="@+id/EditText01"
+        android:layout_alignLeft="@+id/perheightveiw"
+        android:text="体重(kg)"
+        android:textSize="@dimen/abc_action_bar_title_text_size" />
+
+    <RadioButton
+        android:id="@+id/radioButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/radioButton1"
+        android:layout_alignBottom="@+id/radioButton1"
+        android:layout_alignRight="@+id/textView1"
+        android:text="女" />
+
+</RelativeLayout>
