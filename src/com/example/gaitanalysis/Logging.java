@@ -1,5 +1,6 @@
 package com.example.gaitanalysis;
 
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class Logging extends ActionBarActivity {
+	private ActionBar actionbar;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

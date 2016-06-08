@@ -18,25 +18,6 @@
         android:text="注 册"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <ImageButton
-        android:id="@+id/imageButton1"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:background="@drawable/home"
-        android:scaleType="fitXY"
-        android:src="@drawable/home" />
-
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/imageButton1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="14dp"
-        android:src="@drawable/line1" />
-
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
@@ -124,5 +105,14 @@
         android:layout_marginTop="19dp"
         android:background="@color/darkblue"
         android:text="下一步" />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/personaccount"
+        android:layout_alignLeft="@+id/textView4"
+        android:layout_marginBottom="54dp"
+        android:src="@drawable/line1" />
 
 </RelativeLayout>

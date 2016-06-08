@@ -10,36 +10,41 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/logo"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Base.AppCompat.Light" >
           
         </activity>
         <activity
             android:name=".Register2"
-            android:label="@string/title_activity_register2"
-            android:parentActivityName=".MainActivity" >
+           	android:label="@string/app_name"
+            android:theme="@style/Theme.Base.AppCompat.Light" >
       		
         </activity>
         <activity
             android:name=".RegisterPat"
-            android:label="@string/title_activity_register_pat" >
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Base.AppCompat.Light" >
            
         </activity>
         <activity
             android:name=".Register_rel"
-            android:label="@string/title_activity_register_rel" >
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Base.AppCompat.Light" >
         </activity>
         <activity
             android:name=".SuccessRegister"
-            android:label="@string/title_activity_success_register" >
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Base.AppCompat.Light">
         </activity>
         <activity
             android:name=".Logging"
-            android:label="@string/title_activity_logging" >
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Base.AppCompat.Light" >
             <intent-filter>
                <action android:name="android.intent.action.MAIN" />
                <category android:name="android.intent.category.LAUNCHER" />
@@ -47,7 +52,8 @@
         </activity>
         <activity
             android:name=".PatInfoMod"
-            android:label="@string/title_activity_pat_info_mod" >
+             android:label="@string/app_name"
+            android:theme="@style/Theme.Base.AppCompat.Light" >
         </activity>
     </application>
 

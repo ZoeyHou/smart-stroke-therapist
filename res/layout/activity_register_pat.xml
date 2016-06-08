@@ -18,25 +18,6 @@
         android:text="个 人 信 息"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <ImageButton
-        android:id="@+id/imageButton1"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:background="@drawable/home"
-        android:scaleType="fitXY"
-        android:src="@drawable/home" />
-
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/imageButton1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="14dp"
-        android:src="@drawable/line1" />
-
     <Button
         android:id="@+id/regpatnext"
         android:layout_width="90dp"
@@ -142,5 +123,14 @@
         android:layout_alignBottom="@+id/radioButton1"
         android:layout_alignRight="@+id/textView1"
         android:text="女" />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/peragetext"
+        android:layout_marginTop="54dp"
+        android:src="@drawable/line1" />
 
 </RelativeLayout>

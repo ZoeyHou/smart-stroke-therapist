@@ -1,5 +1,6 @@
 package com.example.gaitanalysis;
 
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -14,7 +15,7 @@ import android.widget.RadioGroup;
 
 
 @SuppressLint("NewApi") public class MainActivity extends ActionBarActivity {
-
+	private ActionBar actionbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
