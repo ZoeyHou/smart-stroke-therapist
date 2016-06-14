@@ -15,58 +15,70 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name"
+            android:label="@string/register"
             android:theme="@style/Theme.Base.AppCompat.Light" >
-          
         </activity>
         <activity
             android:name=".Register2"
-           	android:label="@string/app_name"
+            android:label="@string/register"
             android:theme="@style/Theme.Base.AppCompat.Light" >
-      		
         </activity>
         <activity
             android:name=".RegisterPat"
-            android:label="@string/app_name"
+            android:label="@string/basic_info"
             android:theme="@style/Theme.Base.AppCompat.Light" >
-           
         </activity>
         <activity
             android:name=".Register_rel"
-            android:label="@string/app_name"
+            android:label="@string/login"
             android:theme="@style/Theme.Base.AppCompat.Light" >
         </activity>
         <activity
             android:name=".SuccessRegister"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.Base.AppCompat.Light">
+            android:label="@string/title_activity_success_register"
+            android:theme="@style/Theme.Base.AppCompat.Light" >
         </activity>
         <activity
             android:name=".Logging"
-            android:label="@string/app_name"
+            android:label="@string/login"
             android:theme="@style/Theme.Base.AppCompat.Light" >
-            <intent-filter>
-               <action android:name="android.intent.action.MAIN" />
-               <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".PatInfoMod"
-             android:label="@string/app_name"
+            android:label="@string/basic_info"
             android:theme="@style/Theme.Base.AppCompat.Light" >
         </activity>
-         <activity android:name="com.gait.test.selectLengthType">
-             
+        <activity android:name="com.gait.test.selectLengthType" >
         </activity>
-        <activity android:name="com.gait.test.chooseModel">
-            
+        <activity android:name="com.gait.test.chooseModel" >
         </activity>
-         <activity android:name="com.gait.test.pretest">
-        </intent-filter>
+        <activity android:name="com.gait.test.pretest" >
         </activity>
-        <activity android:name="com.gait.test.testing">       
+        <activity android:name="com.gait.test.testing" >
         </activity>
-        <activity android:name="com.gait.test.testResult">       
+        <activity android:name="com.gait.test.testResult" >
+        </activity>
+        <activity
+            android:name=".StartImage"
+            android:label="@string/title_activity_start_image" >
+           
+        </activity>
+        <activity
+            android:name=".HomePage"
+            android:label="@string/title_activity_home_page" >
+        </activity>
+        <activity
+            android:name=".HomePage2"
+            android:label="@string/title_activity_home_page2" >
+        </activity>
+        <activity
+            android:name=".PersonalSetting"
+            android:label="@string/title_activity_personal_setting" >
+             <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 

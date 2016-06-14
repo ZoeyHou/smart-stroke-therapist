@@ -1,6 +1,5 @@
-package com.gait.test;
+package com.example.gaitanalysis;
 
-import com.example.gait.R;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Window;

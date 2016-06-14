@@ -2,13 +2,19 @@
 <resources>
 
     <string name="app_name">GaitAnalysis</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
-    <string name="title_activity_register2">Register2</string>
-    <string name="title_activity_register_pat">RegisterPat</string>
+    <string name="login">登录</string>
+    <string name="register">注册</string>
+    <string name="basic_info">个人信息</string>
     <string name="title_activity_register_rel">Register_rel</string>
-    <string name="title_activity_success_register">SuccessRegister</string>
+    <string name="title_activity_success_register">身份验证</string>
     <string name="title_activity_logging">Logging</string>
     <string name="title_activity_pat_info_mod">PatInfoMod</string>
+    <string name="title_activity_startimage">MainActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_start_image">StartImage</string>
+    <string name="title_activity_home_page">主界面</string>
+    <string name="title_activity_home_page2">主界面</string>
+    <string name="title_activity_personal_setting">个人设置</string>
 
 </resources>

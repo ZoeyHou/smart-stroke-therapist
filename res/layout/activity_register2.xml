@@ -9,24 +9,58 @@
     tools:context="com.example.gaitanalysis.Register2" >
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/imageView1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="23dp"
-        android:text="注 册"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:layout_alignBaseline="@+id/personaccount"
+        android:layout_alignBottom="@+id/personaccount"
+        android:layout_alignLeft="@+id/textView4"
+        android:text="账号"
+        android:textSize="@dimen/abc_action_bar_title_text_size" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="202dp"
+        android:layout_toLeftOf="@+id/EditText01"
+        android:text="医生账号"
+        android:textSize="@dimen/abc_action_bar_title_text_size" />
+
+    <EditText
+        android:id="@+id/personaccount"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/personpassword"
+        android:layout_alignRight="@+id/textView4"
+        android:layout_marginBottom="45dp"
+        android:background="@drawable/text_rectan_border"
+        android:ems="20"
+        android:hint="请输入账号"
+        android:singleLine="true" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/personpassword"
-        android:layout_alignBottom="@+id/personpassword"
+        android:layout_alignBottom="@+id/textView3"
         android:layout_alignLeft="@+id/textView1"
+        android:layout_marginBottom="76dp"
         android:text="密码"
         android:textSize="@dimen/abc_action_bar_title_text_size" />
+
+    <EditText
+        android:id="@+id/personpassword"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView2"
+        android:layout_alignBottom="@+id/textView2"
+        android:layout_alignLeft="@+id/personaccount"
+        android:background="@drawable/text_rectan_border"
+        android:ems="20"
+        android:hint="请输入密码"
+        android:singleLine="true" />
 
     <EditText
         android:id="@+id/EditText01"
@@ -35,84 +69,29 @@
         android:layout_alignBaseline="@+id/textView3"
         android:layout_alignBottom="@+id/textView3"
         android:layout_alignLeft="@+id/personpassword"
-        android:background="@drawable/text_border"
+        android:background="@drawable/text_rectan_border"
         android:ems="20"
         android:hint="请输入医生账号(选填)"
         android:singleLine="true" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_toLeftOf="@+id/button1"
-        android:text="医生账号"
-        android:textSize="@dimen/abc_action_bar_title_text_size" />
-
-    <EditText
-        android:id="@+id/personpassword"
-        android:layout_width="180dp"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/EditText01"
-        android:layout_marginBottom="28dp"
-        android:layout_toRightOf="@+id/textView3"
-        android:background="@drawable/text_border"
-        android:ems="20"
-        android:hint="请输入密码"
-        android:singleLine="true" />
-
-    <EditText
-        android:id="@+id/personaccount"
-        android:layout_width="180dp"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/personpassword"
-        android:layout_alignRight="@+id/imageView1"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/text_border"
-        android:ems="20"
-        android:hint="请输入账号"
-        android:singleLine="true" >
-
-        <requestFocus />
-    </EditText>
-
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/personaccount"
-        android:layout_alignBottom="@+id/personaccount"
-        android:layout_alignLeft="@+id/imageView1"
-        android:text="账号"
-        android:textSize="@dimen/abc_action_bar_title_text_size" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="230dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/EditText01"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="31dp"
-        android:text="         APP适用人群：因高血压导致的脑卒中引起的偏瘫人群，尚有不依靠他人或拐杖等而可以独立行走的能力"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <Button
         android:id="@+id/button1"
         android:layout_width="90dp"
         android:layout_height="40dp"
-        android:layout_alignLeft="@+id/personaccount"
+        android:layout_alignLeft="@+id/EditText01"
         android:layout_below="@+id/textView4"
-        android:layout_marginTop="19dp"
+        android:layout_marginTop="30dp"
         android:background="@color/darkblue"
         android:text="下一步" />
 
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="230dp"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/personaccount"
-        android:layout_alignLeft="@+id/textView4"
-        android:layout_marginBottom="54dp"
-        android:src="@drawable/line1" />
+        android:layout_below="@+id/textView3"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="42dp"
+        android:text="         APP适用人群：因高血压导致的脑卒中引起的偏瘫人群，尚有不依靠他人或拐杖等而可以独立行走的能力"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
 </RelativeLayout>

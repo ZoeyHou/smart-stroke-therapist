@@ -8,26 +8,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.gaitanalysis.Logging" >
 
-       <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/imageView1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="23dp"
-        android:text="登 录"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-       
-    <TextView
-        android:id="@+id/pwdView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/accountView"
-        android:layout_below="@+id/accountView"
-        android:layout_marginTop="26dp"
-        android:text="密码"
-        android:textSize="@dimen/abc_action_bar_title_text_size" />
-
     <Button
         android:id="@+id/button1"
         android:layout_width="90dp"
@@ -35,7 +15,7 @@
         android:layout_above="@+id/button2"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="17dp"
-        android:background="@color/darkblue"
+        android:background="@drawable/button_border"
         android:text="登录" />
 
     <Button
@@ -45,26 +25,18 @@
         android:layout_alignLeft="@+id/button1"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="66dp"
-        android:background="@color/darkblue"
+        android:background="@drawable/button_border"
         android:text="注册" />
 
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:src="@drawable/line1" />
-
     <TextView
-        android:id="@+id/accountView"
+        android:id="@+id/pwdView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/imageView1"
-        android:layout_below="@+id/imageView1"
-        android:layout_marginTop="80dp"
-        android:text="账号"
+        android:layout_above="@+id/button1"
+        android:layout_marginBottom="98dp"
+        android:layout_marginRight="37dp"
+        android:layout_toLeftOf="@+id/accountInput"
+        android:text="密码"
         android:textSize="@dimen/abc_action_bar_title_text_size" />
 
     <EditText
@@ -72,11 +44,22 @@
         android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:layout_above="@+id/pwdView"
-        android:layout_alignRight="@+id/imageView1"
-        android:background="@drawable/text_border"
+        android:layout_alignLeft="@+id/button1"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/text_rectan_border"
         android:ems="20"
         android:hint="请输入账号"
         android:singleLine="true" />
+
+    <TextView
+        android:id="@+id/accountView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/accountInput"
+        android:layout_alignBottom="@+id/accountInput"
+        android:layout_alignLeft="@+id/pwdView"
+        android:text="账号"
+        android:textSize="@dimen/abc_action_bar_title_text_size" />
 
     <EditText
         android:id="@+id/pwdInput"
@@ -84,8 +67,8 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/pwdView"
         android:layout_alignBottom="@+id/pwdView"
-        android:layout_alignLeft="@+id/accountInput"
-        android:background="@drawable/text_border"
+        android:layout_toRightOf="@+id/pwdView"
+        android:background="@drawable/text_rectan_border"
         android:ems="20"
         android:hint="请输入密码"
         android:singleLine="true" >

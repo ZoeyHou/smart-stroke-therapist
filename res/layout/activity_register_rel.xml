@@ -8,17 +8,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.gaitanalysis.Register_rel" >
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/imageView1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="23dp"
-        android:text="注 册"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-     
-      <Button
+    <Button
         android:id="@+id/regpatnext"
         android:layout_width="90dp"
         android:layout_height="40dp"
@@ -28,79 +18,74 @@
         android:background="@color/darkblue"
         android:text="下一步" />
 
-      <TextView
-          android:id="@+id/textView2"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_alignLeft="@+id/imageView1"
-          android:layout_below="@+id/imageView1"
-          android:layout_marginTop="52dp"
-          android:text="账号"
-          android:textSize="@dimen/abc_action_bar_title_text_size" />
+    <EditText
+        android:id="@+id/personpassword"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView3"
+        android:layout_alignBottom="@+id/textView3"
+        android:layout_alignLeft="@+id/EditText01"
+        android:background="@drawable/text_rectan_border"
+        android:ems="20"
+        android:hint="请输入密码"
+        android:singleLine="true" >
 
-      <EditText
-          android:id="@+id/personaccount"
-          android:layout_width="180dp"
-          android:layout_height="wrap_content"
-          android:layout_alignBaseline="@+id/textView2"
-          android:layout_alignBottom="@+id/textView2"
-          android:layout_alignRight="@+id/imageView1"
-          android:background="@drawable/text_border"
-          android:ems="20"
-          android:hint="请输入账号"
-          android:singleLine="true" />
+        <requestFocus />
+    </EditText>
 
-      <EditText
-          android:id="@+id/personpassword"
-          android:layout_width="180dp"
-          android:layout_height="wrap_content"
-          android:layout_alignLeft="@+id/personaccount"
-          android:layout_below="@+id/personaccount"
-          android:layout_marginTop="28dp"
-          android:background="@drawable/text_border"
-          android:ems="20"
-          android:hint="请输入密码"
-          android:singleLine="true" />
+    <EditText
+        android:id="@+id/personaccount"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView2"
+        android:layout_alignBottom="@+id/textView2"
+        android:layout_alignLeft="@+id/personpassword"
+        android:background="@drawable/text_rectan_border"
+        android:ems="20"
+        android:hint="请输入账号"
+        android:singleLine="true" />
 
-      <TextView
-          android:id="@+id/textView3"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_alignBaseline="@+id/personpassword"
-          android:layout_alignBottom="@+id/personpassword"
-          android:layout_alignLeft="@+id/textView2"
-          android:text="密码"
-          android:textSize="@dimen/abc_action_bar_title_text_size" />
+    <EditText
+        android:id="@+id/EditText01"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/personpassword"
+        android:layout_marginTop="52dp"
+        android:layout_toRightOf="@+id/textView4"
+        android:background="@drawable/text_rectan_border"
+        android:ems="20"
+        android:hint="请输入患者账号(选填)"
+        android:singleLine="true" />
 
-      <EditText
-          android:id="@+id/EditText01"
-          android:layout_width="180dp"
-          android:layout_height="wrap_content"
-          android:layout_alignBaseline="@+id/textView4"
-          android:layout_alignBottom="@+id/textView4"
-          android:layout_toRightOf="@+id/textView4"
-          android:background="@drawable/text_border"
-          android:ems="20"
-          android:hint="请输入患者账号(选填)"
-          android:singleLine="true" />
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/EditText01"
+        android:layout_alignBottom="@+id/EditText01"
+        android:layout_toLeftOf="@+id/regpatnext"
+        android:text="患者账号"
+        android:textSize="@dimen/abc_action_bar_title_text_size" />
 
-      <TextView
-          android:id="@+id/textView4"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_below="@+id/personpassword"
-          android:layout_marginTop="30dp"
-          android:layout_toLeftOf="@+id/personpassword"
-          android:text="患者账号"
-          android:textSize="@dimen/abc_action_bar_title_text_size" />
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView4"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="104dp"
+        android:text="账号"
+        android:textSize="@dimen/abc_action_bar_title_text_size" />
 
-      <ImageView
-          android:id="@+id/imageView1"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_alignParentTop="true"
-          android:layout_centerHorizontal="true"
-          android:layout_marginTop="57dp"
-          android:src="@drawable/line1" />
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_below="@+id/textView2"
+        android:layout_marginTop="41dp"
+        android:text="密码"
+        android:textSize="@dimen/abc_action_bar_title_text_size" />
 
 </RelativeLayout>

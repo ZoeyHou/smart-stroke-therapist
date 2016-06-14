@@ -9,15 +9,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.gaitanalysis.MainActivity" >
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/imageView1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="23dp"
-        android:text="注 册"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
         android:id="@+id/textView2"
@@ -36,7 +27,7 @@
             android:layout_below="@+id/radioGroup1"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="80dp"
-            android:background="@color/darkblue"
+            android:background="@drawable/button_border"
             android:text="下一步" />
 
         <RadioGroup
@@ -63,14 +54,5 @@
                 android:layout_toLeftOf="@+id/textView1"
                 android:text="患者" />
         </RadioGroup>
-
-        <ImageView
-            android:id="@+id/imageView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="62dp"
-            android:src="@drawable/line1" />
 
 </RelativeLayout>
