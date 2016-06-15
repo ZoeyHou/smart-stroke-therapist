@@ -1,0 +1,102 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.gaitanalysis.HomePage" >
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_alignBottom="@+id/button1"
+        android:layout_centerHorizontal="true"
+        android:background="@color/blue"
+        android:text="康复训练" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_below="@+id/button1"
+        android:layout_marginTop="29dp"
+        android:background="@color/blue"
+        android:text="个人信息" />
+
+    <Button
+        android:id="@+id/button6"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_alignBaseline="@+id/button5"
+        android:layout_alignBottom="@+id/button5"
+        android:layout_alignRight="@+id/textView1"
+        android:background="@color/blue"
+        android:text="个人设置" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_alignLeft="@+id/button4"
+        android:layout_below="@+id/textView1"
+        android:layout_marginTop="34dp"
+        android:background="@color/blue"
+        android:text="测试模块" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_above="@+id/button4"
+        android:layout_alignLeft="@+id/button6"
+        android:background="@color/blue"
+        android:text="历史记录" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_alignBaseline="@+id/button4"
+        android:layout_alignBottom="@+id/button4"
+        android:layout_alignLeft="@+id/button2"
+        android:background="@color/blue"
+        android:text="偏袒知识" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="250dp"
+        android:layout_height="130dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/text_border"
+        android:gravity="center"
+        android:text="" />
+
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="28dp"
+        android:layout_marginRight="18dp"
+        android:layout_toLeftOf="@+id/button8"
+        android:background="@drawable/button_border"
+        android:text="      登录      " />
+
+    <Button
+        android:id="@+id/button8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/button7"
+        android:layout_alignBottom="@+id/button7"
+        android:layout_alignRight="@+id/button6"
+        android:layout_marginRight="21dp"
+        android:background="@drawable/button_border"
+        android:text="      注册      " />
+
+</RelativeLayout>
