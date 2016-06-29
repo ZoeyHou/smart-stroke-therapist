@@ -73,6 +73,11 @@ public class Logging extends ActionBarActivity {
 		});
 		*/
 		
+        Intent i = new Intent();
+        i.putExtra("patient_id",patient_id);
+        i.setClass(Logging.this, HomePage2.class);
+        startActivity(i);
+        
 		registerLogin.setOnClickListener(new OnClickListener() {
 			
 			@Override

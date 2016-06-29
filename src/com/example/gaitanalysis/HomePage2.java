@@ -11,6 +11,20 @@ public class HomePage2 extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home_page2);
+        
+        // getting patient details from intent
+        Intent i = getIntent();
+        // getting patient id (pid) from intent
+        String patient_id = i.getStringExtra("patient_id");
+        
+        Intent i1 = new Intent();
+        i1.putExtra("patient_id",patient_id);
+        i1.setClass(HomePage2.this, PatInfoMod.class);
+        startActivity(i1);
+        Intent i2 = new Intent();
+        i2.putExtra("patient_id",patient_id);
+        i2.setClass(HomePage2.this, PersonalSetting.class);
+        startActivity(i2);
 	}
 
 	@Override
