@@ -2,7 +2,7 @@
     /**
      * A class file to connect to database
      */
-    classDB_CONNECT {
+    class DB_CONNECT {
         // constructor
         function__construct() {
             // connecting to database
@@ -16,7 +16,7 @@
         /**
          * Function to connect with database
          */
-        functionconnect() {
+        function connect() {
             // import database connection variables
             require_once__DIR__ . '/db_config.php';
             // Connecting to mysql database
@@ -24,12 +24,12 @@
             // Selecing database
             $db= mysql_select_db(DB_DATABASE) ordie(mysql_error()) ordie(mysql_error());
             // returing connection cursor 
-            return$con; 
+            return $con; 
         } 
         /** 
          * Function to close db connection 
          */
-        functionclose() { 
+        function close() {
             // closing db connection 
             mysql_close(); 
         } 

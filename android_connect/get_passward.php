@@ -9,19 +9,13 @@
     if(isset($_GET["patient_id"])) {
         $patient_id= intval($_GET['patient_id']);
         // get a patient from table
-        $result= mysql_query("SELECT * FROM patient WHERE patient_id = $patient_id");
+        $result= mysql_query("SELECT patient_pwd FROM patient WHERE patient_id = $patient_id");
         if(!empty($result)) {
             // check for empty result
             if(mysql_num_rows($result) > 0) {
                 $result= mysql_fetch_array($result);
                 $patient= array();
-                $patient["patient_id"] = strval($result["patient_id"]);
-                $patient["patient_name"] = $result["patient_name"];
-                $patient["gender"] = strval($result["gender"]);
-                $patient["age"] = strval($result["age"]);
-                $patient["height"] = strval($result["height"]);
-                $patient["weight"] = strval($result["weight"]);
-                $patient["leg_length"] = strval($result["leg_length"]);
+                $patient["patient_pwd"] = $result["patient_pwd"];
                 // success
                 $response["success"] = 1;
                 // user node
@@ -42,9 +36,38 @@
             $response["message"] = "No patient found"; 
             // echo no users JSON 
             echo json_encode($response);
-        } 
-    } else{ 
-        // required field is missing 
+        }
+        // or it could be a relative
+        $result = mysql_query("SELECT relative_pwd FROM relative WHERE relative_id = $patient_id");
+        if(!empty($result)) {
+            // check for empty result
+            if(mysql_num_rows($result) > 0) {
+                $result= mysql_fetch_array($result);
+                $relative= array();
+                $relative["relative_pwd"] = $result["relative_pwd"];
+                // success
+                $response["success"] = 1;
+                // user node
+                $response["relative"] = array();
+                array_push($response["relative"], $relative);
+                // echoing JSON response
+                echo json_encode($response);
+            } else{
+                // no relative found
+                $response["success"] = 0;
+                $response["message"] = "No relative found";
+                // echo no users JSON
+                echo json_encode($response);
+            }
+        } else{
+            // no relative found
+            $response["success"] = 0;
+            $response["message"] = "No relative found";
+            // echo no users JSON
+            echo json_encode($response);
+        }
+    } else{
+        // required field is missing
         $response["success"] = 0; 
         $response["message"] = "Required field(s) is missing"; 
         // echoing JSON response 
