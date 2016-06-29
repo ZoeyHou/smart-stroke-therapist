@@ -16,5 +16,7 @@
     <string name="title_activity_home_page">主界面</string>
     <string name="title_activity_home_page2">主界面</string>
     <string name="title_activity_personal_setting">个人设置</string>
+    <string name="title_activity_leg_len_record">个人信息</string>
+    <string name="title_activity_pat_info_mod2">个人信息</string>
 
 </resources>

@@ -2,13 +2,17 @@ package com.example.gaitanalysis;
 
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
+
 
 public class StartImage extends ActionBarActivity {
 	 // ActionBar actionBar=getSupportActionBar();
 	  //actionBar.hide();
+	private final int SPLASH_DISPLAY_LENGHT = 1000;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -16,6 +20,18 @@ public class StartImage extends ActionBarActivity {
 		ActionBar actionBar = getSupportActionBar(); 
 		actionBar.hide();
 		setContentView(R.layout.activity_start_image);
+		
+		new Handler().postDelayed(new Runnable(){ 
+			 
+	         @Override
+	         public void run() { 
+	             Intent mainIntent = new Intent(StartImage.this,MainActivity.class); 
+	             StartImage.this.startActivity(mainIntent); 
+	             StartImage.this.finish(); 
+	         } 
+	             
+	    }, SPLASH_DISPLAY_LENGHT); 
+
 	}
 
 	@Override

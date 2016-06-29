@@ -17,7 +17,7 @@
         android:layout_centerVertical="true"
         android:layout_marginTop="148dp"
         android:gravity="center"
-        android:text="欢迎进入偏袒辅助康复平台！"
+        android:text="欢迎进入偏瘫辅助康复平台！"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="40dp" />
 

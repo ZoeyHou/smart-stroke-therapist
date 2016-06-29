@@ -60,26 +60,42 @@
         </activity>
         <activity
             android:name=".StartImage"
-            android:label="@string/title_activity_start_image" >
-           
-        </activity>
-        <activity
-            android:name=".HomePage"
-            android:label="@string/title_activity_home_page" >
-        </activity>
-        <activity
-            android:name=".HomePage2"
-            android:label="@string/title_activity_home_page2" >
-        </activity>
-        <activity
-            android:name=".PersonalSetting"
-            android:label="@string/title_activity_personal_setting" >
-             <intent-filter>
+            android:label="@string/title_activity_start_image"
+            android:theme="@style/Theme.Base.AppCompat.Light" >
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".HomePage"
+            android:label="@string/title_activity_home_page"
+            android:theme="@style/Theme.Base.AppCompat.Light" >
+        </activity>
+        <activity
+            android:name=".HomePage2"
+            android:label="@string/title_activity_home_page2"
+            android:theme="@style/Theme.Base.AppCompat.Light" >
+        </activity>
+        <activity
+            android:name=".PersonalSetting"
+            android:label="@string/title_activity_personal_setting"
+            android:theme="@style/Theme.Base.AppCompat.Light" >
+        </activity>
+        <activity
+            android:name=".LegLenRecord"
+            android:label="@string/title_activity_leg_len_record"
+            android:theme="@style/Theme.Base.AppCompat.Light" >
+        </activity>
+        <activity
+            android:name=".PatInfoMod2"
+            android:label="@string/title_activity_pat_info_mod2"
+            android:theme="@style/Theme.Base.AppCompat.Light" >
+        </activity>
     </application>
+
+    <!-- Internet Permissions -->
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>
