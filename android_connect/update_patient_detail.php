@@ -13,7 +13,7 @@
         // connecting to db
         $db= new DB_CONNECT();
         // mysql update row with matched patient_id
-        $result= mysql_query("UPDATE patient SET age = $age, height = $height, gender = $gender, weight = $weight WHERE patient_id = $patient_id");
+        $result= mysql_query("UPDATE patient SET age = '$age', height = '$height', gender = '$gender', weight = '$weight' WHERE patient_id = $patient_id");
         // check if row inserted or not
         if($result) {
             // successfully updated

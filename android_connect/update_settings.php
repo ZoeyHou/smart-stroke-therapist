@@ -15,7 +15,7 @@ require_once__DIR__ . '/db_connect.php';
 // connecting to db 
 $db= new DB_CONNECT();
 // mysql update row with matched patient_id
-$result= mysql_query("UPDATE settings SET alarm_or_not = $alarm_or_not, start_hour = $start_hour, start_minute = $start_minute, end_hour = $end_hour, end_minute = $end_minute, summary_frequency = $summary_frequency WHERE patient_id = $patient_id");
+$result= mysql_query("UPDATE settings SET alarm_or_not = '$alarm_or_not', start_hour = '$start_hour', start_minute = '$start_minute', end_hour = '$end_hour', end_minute = '$end_minute', summary_frequency = '$summary_frequency' WHERE patient_id = $patient_id");
 // check if row inserted or not
 if($result) {
 // successfully updated

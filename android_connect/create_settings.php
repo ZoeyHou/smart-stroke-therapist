@@ -16,7 +16,7 @@ require_once__DIR__ . '/db_connect.php';
 // connecting to db
 $db= new DB_CONNECT(); 
 // mysql update row with matched patient_id
-$result= mysql_query("INSERT INTO settings(patient_id, alarm_or_not, start_hour, start_minute, end_hour, end_minute, doctor_advice, summary_frequency) VALUES ($patient_id, $alarm_or_not, $start_hour, $start_minute, $end_hour, $end_minute, '$doctor_advice', $summary_frequency)");
+$result= mysql_query("INSERT INTO settings(patient_id, alarm_or_not, start_hour, start_minute, end_hour, end_minute, doctor_advice, summary_frequency) VALUES ('$patient_id', '$alarm_or_not', '$start_hour', '$start_minute', '$end_hour', '$end_minute', '$doctor_advice', '$summary_frequency')");
 // check if row inserted or not
 if($result) {
 // successfully inserted into database

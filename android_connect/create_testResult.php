@@ -16,7 +16,7 @@ require_once__DIR__ . '/db_connect.php';
 // connecting to db 
 $db= new DB_CONNECT();
 // mysql inserting a new row 
-$result= mysql_query("INSERT INTO test_result(patient_id, avg_length, avg_cadence, avg_degree, dcd_length, dcd_cadence, dcd_degree) VALUES($patient_id, $avg_length, $avg_cadence, $avg_degree, $dcd_length, $dcd_cadence, $dcd_degree)");
+$result= mysql_query("INSERT INTO test_result(patient_id, avg_length, avg_cadence, avg_degree, dcd_length, dcd_cadence, dcd_degree) VALUES('$patient_id', '$avg_length', '$avg_cadence', '$avg_degree', '$dcd_length', '$dcd_cadence', '$dcd_degree')");
 // check if row inserted or not 
 if($result) { 
 // successfully inserted into database 

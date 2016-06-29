@@ -11,8 +11,8 @@ require_once__DIR__ . '/db_connect.php';
 // connecting to db 
 $db= new DB_CONNECT();
 // mysql inserting a new row 
-$result1 = mysql_query("INSERT INTO patient(patient_id, patient_pwd, patient_name, height, gender, weight, age, leg_length, doctor_id) VALUES($patient_id, '$patient_pwd', NULL, NULL, NULL, NULL, NULL, NULL, '$doctor_id')");
-$result2= mysql_query("INSERT INTO settings(patient_id, alarm_or_not, start_hour, end_hour, start_minute, end_minute, doctor_advice, summary_frequency) VALUES($patient_id, NULL, NULL, NULL, NULL, NULL, NULL, NULL)");
+$result1 = mysql_query("INSERT INTO patient(patient_id, patient_pwd, patient_name, height, gender, weight, age, leg_length, doctor_id) VALUES('$patient_id', '$patient_pwd', NULL, NULL, NULL, NULL, NULL, NULL, '$doctor_id')");
+$result2= mysql_query("INSERT INTO settings(patient_id, alarm_or_not, start_hour, end_hour, start_minute, end_minute, doctor_advice, summary_frequency) VALUES('$patient_id', NULL, NULL, NULL, NULL, NULL, NULL, NULL)");
 // check if row inserted or not
 if($result1) {
 // successfully inserted into database 

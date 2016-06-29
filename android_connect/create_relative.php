@@ -11,7 +11,7 @@ require_once__DIR__ . '/db_connect.php';
 // connecting to db 
 $db= new DB_CONNECT();
 // mysql inserting a new row 
-$result= mysql_query("INSERT INTO relative(relative_id, relative_pwd, patient_id) VALUES($relative_id, '$relative_pwd', $patient_id)");
+$result= mysql_query("INSERT INTO relative(relative_id, relative_pwd, patient_id) VALUES('$relative_id', '$relative_pwd', '$patient_id')");
 // check if row inserted or not 
 if($result) { 
 // successfully inserted into database 
