@@ -16,6 +16,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.os.AsyncTask;
 //import android.os.Bundle;
@@ -201,19 +202,19 @@ public class PersonalSetting extends ActionBarActivity {
                 summary_frequency = "1";
             }
             // Building Parameters
-            List<NameValuePair> params = newArrayList<NameValuePair>();
-            params.add(newBasicNameValuePair(TAG_PID, pid));
-            params.add(newBasicNameValuePair(TAG_ALARM, alarm_or_not));
-            params.add(newBasicNameValuePair(TAG_SH, start_hour));
-            params.add(newBasicNameValuePair(TAG_SM, start_minute));
-            params.add(newBasicNameValuePair(TAG_EH, end_hour));
-            params.add(newBasicNameValuePair(TAG_EM, end_minute));
+            ContentValues content = new ContentValues();
+            content.put(TAG_PID, pid);
+            content.put(TAG_ALARM, alarm_or_not);
+            content.put(TAG_SH, start_hour);
+            content.put(TAG_SM, start_minute);
+            content.put(TAG_EH, end_hour);
+            content.put(TAG_EM, end_minute);
 //            params.add(newBasicNameValuePair(TAG_DA, doctor_advice));
-            params.add(newBasicNameValuePair(TAG_SUM, summary_frequency));
+            content.put(TAG_SUM, summary_frequency);
             // sending modified data through http request
             // Notice that update patient url accepts POST method
             JSONObject json = jsonParser.makeHttpRequest(url_update_settings,
-                                                         "POST", params);
+                                                         "POST", content);
             // check json success tag
             try{
                 int success = json.getInt(TAG_SUCCESS);
