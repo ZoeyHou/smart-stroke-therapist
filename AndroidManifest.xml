@@ -93,6 +93,9 @@
             android:label="@string/title_activity_pat_info_mod2"
             android:theme="@style/Theme.Base.AppCompat.Light" >
         </activity>
+        //Register the dataCollectService service
+        <service android:name="com.example.gaitanalysis.dataCollectService"></service>
+        
     </application>
 
     <!-- Internet Permissions -->
