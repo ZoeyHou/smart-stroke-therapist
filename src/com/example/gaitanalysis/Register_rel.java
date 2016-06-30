@@ -13,7 +13,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.ContentValues;
 import android.content.Intent;
 import android.os.AsyncTask;
 //import android.os.Bundle;
@@ -80,14 +79,14 @@ public class Register_rel extends ActionBarActivity {
             String relative_pwd = inputrelative_pwd.getText().toString();
             String patient_id = inputpatient_id.getText().toString().trim();
             // Building Parameters
-            ContentValues content = new ContentValues();
-            content.put("relative_id", relative_id);
-            content.put("relative_pwd", relative_pwd);
-            content.put("patient_id", patient_id);
+            List<NameValuePair> params = newArrayList<NameValuePair>();
+            params.add(newBasicNameValuePair("relative_id", relative_id));
+            params.add(newBasicNameValuePair("relative_pwd", relative_pwd));
+            params.add(newBasicNameValuePair("patient_id", patient_id));
             // getting JSON Object
             // Note that create relative url accepts POST method
             JSONObject json = jsonParser.makeHttpRequest(url_create_relative,
-                                                         "POST", content);
+                                                         "POST", params);
             // check log cat fro response
             Log.d("Create Response", json.toString());
             // check for success tag

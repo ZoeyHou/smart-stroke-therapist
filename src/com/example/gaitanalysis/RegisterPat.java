@@ -14,7 +14,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.ContentValues;
 import android.content.Intent;
 import android.os.AsyncTask;
 //import android.os.Bundle;
@@ -97,16 +96,16 @@ public class RegisterPat extends ActionBarActivity {
                 gender = "1";
             }
             // Building Parameters
-            ContentValues content=new ContentValues();
-            content.put("patient_id", patient_id);
-            content.put("age", age);
-            content.put("height", height);
-            content.put("gender", gender);
-            content.put("weight", weight);
+            List<NameValuePair> params = newArrayList<NameValuePair>();
+            params.add(newBasicNameValuePair("patient_id", patient_id));
+            params.add(newBasicNameValuePair("age", age));
+            params.add(newBasicNameValuePair("height", height));
+            params.add(newBasicNameValuePair("gender", gender));
+            params.add(newBasicNameValuePair("weight", weight));
             // getting JSON Object
             // Note that create patient url accepts POST method
             JSONObject json = jsonParser.makeHttpRequest(url_update_patient,
-                                                         "POST",content);
+                                                         "POST", params);
             // check log cat fro response
             Log.d("Create Response", json.toString());
             // check for success tag
