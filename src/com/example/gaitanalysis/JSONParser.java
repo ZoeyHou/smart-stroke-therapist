@@ -1,6 +1,7 @@
 package com.example.gaitanalysis;
 
 import android.support.v7.app.ActionBarActivity;
+import android.content.ContentValues;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -33,7 +34,7 @@ public JSONParser() {
 }
 // function get json from url
 // by making HTTP POST or GET mehtod
-public JSONObject makeHttpRequest(String url, String method, List<NameValuePair> params) {
+public static JSONObject makeHttpRequest(String url, String method, ContentValues content) {
     // Making HTTP request
     try{
         // check for request method
@@ -42,14 +43,14 @@ public JSONObject makeHttpRequest(String url, String method, List<NameValuePair>
             // defaultHttpClient
             Default HttpClient httpClient = newDefaultHttpClient();
             HttpPost httpPost = new HttpPost(url);
-            httpPost.setEntity(new UrlEncodedFormEntity(params));
+            httpPost.setEntity(new UrlEncodedFormEntity(content));
             HttpResponse httpResponse = httpClient.execute(httpPost);
             HttpEntity httpEntity = httpResponse.getEntity();
             is = httpEntity.getContent();
         }elseif(method == "GET"){
             // request method is GET
             Default HttpClient httpClient = new DefaultHttpClient();
-            String paramString = URLEncodedUtils.format(params, "utf-8");
+            String paramString = URLEncodedUtils.format(content, "utf-8");
             url += "?"+ paramString;
             HttpGet httpGet = newHttpGet(url);
             HttpResponse httpResponse = httpClient.execute(httpGet);
