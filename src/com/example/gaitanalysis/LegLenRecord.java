@@ -12,6 +12,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.os.AsyncTask;
 //import android.os.Bundle;
@@ -79,14 +80,14 @@ public class LegLenRecord extends ActionBarActivity {
         protected String doInBackground(String... args) {
             String leg_length = inputleg_length.getText().toString().trim();
             // Building Parameters
-            List<NameValuePair> params = newArrayList<NameValuePair>();
-            params.add(newBasicNameValuePair("patient_id", patient_id));
-            params.add(newBasicNameValuePair("leg_length", leg_length));
+            ContentValues content=new ContentValues();
+            content.put("patient_id", patient_id);
+            content.put("leg_length", leg_length);
             
             // getting JSON Object
             // Note that create patient url accepts POST method
             JSONObject json = jsonParser.makeHttpRequest(url_update_leg,
-                                                         "POST", params);
+                                                         "POST", content);
             // check log cat fro response
             Log.d("Create Response", json.toString());
             // check for success tag
