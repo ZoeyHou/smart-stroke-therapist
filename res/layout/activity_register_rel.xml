@@ -9,13 +9,13 @@
     tools:context="com.example.gaitanalysis.Register_rel" >
 
     <Button
-        android:id="@+id/regpatnext"
+        android:id="@+id/button"
         android:layout_width="90dp"
         android:layout_height="40dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="58dp"
-        android:background="@color/darkblue"
+        android:background="@drawable/button_border"
         android:text="下一步" />
 
     <EditText

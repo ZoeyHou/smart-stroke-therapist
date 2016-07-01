@@ -21,11 +21,10 @@ public class StartImage extends ActionBarActivity {
 		actionBar.hide();
 		setContentView(R.layout.activity_start_image);
 		
-		new Handler().postDelayed(new Runnable(){ 
-			 
+		new Handler().postDelayed(new Runnable(){ 		 
 	         @Override
 	         public void run() { 
-	             Intent mainIntent = new Intent(StartImage.this,MainActivity.class); 
+	             Intent mainIntent = new Intent(StartImage.this,HomePage.class); 
 	             StartImage.this.startActivity(mainIntent); 
 	             StartImage.this.finish(); 
 	         } 

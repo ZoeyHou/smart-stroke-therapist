@@ -27,26 +27,12 @@ import android.widget.RadioGroup;
         setContentView(R.layout.activity_main);
         
         findview(); //获取页面中的radiogroup控件
-        setListener();
-        
-        
- /*       else if(str.equals("亲友")==true){
-            next.setOnClickListener(new OnClickListener(){
-            	public void onClick(View v){
-            		Intent intent=
-            				new Intent(MainActivity.this,Register_rel.class);
-            		startActivity(intent);
-            	}
-            });        	
-        }*/
-    
+        setListener();    
     }  
     
     private void setListener() {
-        // TODO Auto-generated method stub
         //设置所有Radiogroup的状态改变监听器
         radiogroup.setOnCheckedChangeListener(mylistener);
-        System.out.println("Here");
     }
     
     RadioGroup.OnCheckedChangeListener mylistener=new RadioGroup.OnCheckedChangeListener()
@@ -93,7 +79,8 @@ import android.widget.RadioGroup;
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_settings) {
-            return true;
+        	Intent intent = new Intent(MainActivity.this, HomePage.class);
+			startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }

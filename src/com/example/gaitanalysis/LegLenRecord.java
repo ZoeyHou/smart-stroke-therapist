@@ -12,7 +12,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.ContentValues;
 import android.content.Intent;
 import android.os.AsyncTask;
 //import android.os.Bundle;
@@ -20,8 +19,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
+import android.content.ContentValues;
 
 public class LegLenRecord extends ActionBarActivity {
 
@@ -52,11 +50,17 @@ public class LegLenRecord extends ActionBarActivity {
         // getting patient id (pid) from intent
         patient_id = i.getStringExtra("patient_id");
         // button click event
-        btnUpdateLeg.setOnClickListener(newView.OnClickListener() {
+        btnUpdateLeg.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view) {           
                 // update patient in background thread
                 new UpdateLeg().execute();
+     /*           //Jump to Page HomePage2
+                Intent intent = new Intent();
+                intent.setClass(LegLenRecord.this, HomePage2.class);
+    			startActivity(intent);
+    */
+    		
             }
         });
 	}
@@ -69,7 +73,7 @@ public class LegLenRecord extends ActionBarActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pDialog = newProgressDialog(LegLenRecord.this);
+            pDialog = new ProgressDialog(LegLenRecord.this);
             pDialog.setMessage("Creating..");
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(true);
@@ -80,14 +84,14 @@ public class LegLenRecord extends ActionBarActivity {
         protected String doInBackground(String... args) {
             String leg_length = inputleg_length.getText().toString().trim();
             // Building Parameters
-            ContentValues content=new ContentValues();
-            content.put("patient_id", patient_id);
-            content.put("leg_length", leg_length);
+            List<NameValuePair> params = new ArrayList<NameValuePair>();
+            params.add(new BasicNameValuePair("patient_id", patient_id));
+            params.add(new BasicNameValuePair("leg_length", leg_length));
             
             // getting JSON Object
             // Note that create patient url accepts POST method
             JSONObject json = jsonParser.makeHttpRequest(url_update_leg,
-                                                         "POST", content);
+                                                         "POST", params);
             // check log cat fro response
             Log.d("Create Response", json.toString());
             // check for success tag
@@ -111,7 +115,7 @@ public class LegLenRecord extends ActionBarActivity {
         //After completing background task Dismiss the progress dialog
         protected void onPostExecute(String file_url) {
             // dismiss the dialog once done
-            pDialog.dismiss();
+            pDialog.dismiss();		
         }
     }
 
@@ -129,7 +133,9 @@ public class LegLenRecord extends ActionBarActivity {
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
 		if (id == R.id.action_settings) {
-			return true;
+			 //Jump to Page HomePage2
+			Intent intent = new Intent(LegLenRecord.this, HomePage.class);
+			startActivity(intent);
 		}
 		return super.onOptionsItemSelected(item);
 	}

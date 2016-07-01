@@ -13,7 +13,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.ContentValues;
 import android.content.Intent;
 import android.os.AsyncTask;
 //import android.os.Bundle;
@@ -23,6 +22,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.content.ContentValues;
 
 public class Register2 extends ActionBarActivity {
 
@@ -49,7 +49,7 @@ public class Register2 extends ActionBarActivity {
         // Create button
         Button btnCreatePatient = (Button) findViewById(R.id.button1);
         // button click event
-        btnCreatePatient.setOnClickListener(newView.OnClickListener() {
+        btnCreatePatient.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // create patient in background thread
@@ -65,7 +65,7 @@ public class Register2 extends ActionBarActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pDialog = newProgressDialog(Register2.this);
+            pDialog = new ProgressDialog(Register2.this);
             pDialog.setMessage("Creating..");
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(true);
@@ -78,14 +78,14 @@ public class Register2 extends ActionBarActivity {
             String patient_pwd = inputpatient_pwd.getText().toString();
             String doctor_id = inputdoctor_id.getText().toString().trim();
             // Building Parameters
-            ContentValues content=new ContentValues();
-            content.put("patient_id", patient_id);
-            content.put("patient_pwd", patient_pwd);
-            content.put("doctor_id", doctor_id);
+            List<NameValuePair> params = new ArrayList<NameValuePair>();
+            params.add(new BasicNameValuePair("patient_id", patient_id));
+            params.add(new BasicNameValuePair("patient_pwd", patient_pwd));
+            params.add(new BasicNameValuePair("doctor_id", doctor_id));
             // getting JSON Object
             // Note that create patient url accepts POST method
             JSONObject json = jsonParser.makeHttpRequest(url_create_patient,
-                                                         "POST", content);
+                                                         "POST", params);
             // check log cat fro response
             Log.d("Create Response", json.toString());
             // check for success tag
@@ -109,7 +109,7 @@ public class Register2 extends ActionBarActivity {
         }
         
         //After completing background task Dismiss the progress dialog
-        protected void on PostExecute(String file_url) {
+        protected void onPostExecute(String file_url) {
             // dismiss the dialog once done
             pDialog.dismiss();
         }
@@ -129,7 +129,8 @@ public class Register2 extends ActionBarActivity {
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
 		if (id == R.id.action_settings) {
-			return true;
+			Intent intent = new Intent(Register2.this, HomePage.class);
+			startActivity(intent);
 		}
 		return super.onOptionsItemSelected(item);
 	}

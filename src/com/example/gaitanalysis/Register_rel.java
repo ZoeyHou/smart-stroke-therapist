@@ -13,7 +13,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.ContentValues;
 import android.content.Intent;
 import android.os.AsyncTask;
 //import android.os.Bundle;
@@ -23,6 +22,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.content.ContentValues;
 
 public class Register_rel extends ActionBarActivity {
 
@@ -50,7 +50,7 @@ public class Register_rel extends ActionBarActivity {
         // Create button
         Button btnCreateRelative = (Button) findViewById(R.id.regpatnext);
         // button click event
-        btnCreateRelative.setOnClickListener(newView.OnClickListener() {
+        btnCreateRelative.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // create relative in background thread
@@ -67,7 +67,7 @@ public class Register_rel extends ActionBarActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pDialog = newProgressDialog(Register_rel.this);
+            pDialog = new ProgressDialog(Register_rel.this);
             pDialog.setMessage("Creating..");
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(true);
@@ -80,14 +80,14 @@ public class Register_rel extends ActionBarActivity {
             String relative_pwd = inputrelative_pwd.getText().toString();
             String patient_id = inputpatient_id.getText().toString().trim();
             // Building Parameters
-            ContentValues content = new ContentValues();
-            content.put("relative_id", relative_id);
-            content.put("relative_pwd", relative_pwd);
-            content.put("patient_id", patient_id);
+            List<NameValuePair> params = new ArrayList<NameValuePair>();
+            params.add(new BasicNameValuePair("relative_id", relative_id));
+            params.add(new BasicNameValuePair("relative_pwd", relative_pwd));
+            params.add(new BasicNameValuePair("patient_id", patient_id));
             // getting JSON Object
             // Note that create relative url accepts POST method
             JSONObject json = jsonParser.makeHttpRequest(url_create_relative,
-                                                         "POST", content);
+                                                         "POST", params);
             // check log cat fro response
             Log.d("Create Response", json.toString());
             // check for success tag
@@ -129,7 +129,8 @@ public class Register_rel extends ActionBarActivity {
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
 		if (id == R.id.action_settings) {
-			return true;
+			Intent intent = new Intent(Register_rel.this, HomePage.class);
+			startActivity(intent);
 		}
 		return super.onOptionsItemSelected(item);
 	}

@@ -1,31 +1,26 @@
 package com.example.gaitanalysis;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 //import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ListAdapter;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.content.ContentValues;
 
 public class PatInfoMod extends ActionBarActivity {
 	private ActionBar actionbar;
@@ -36,7 +31,7 @@ public class PatInfoMod extends ActionBarActivity {
     TextView txtname;
     TextView txtweight;
     TextView txtleg_length;
-    
+    String patient_id;
     // Progress Dialog
     private ProgressDialog pDialog;
     // JSON parser class
@@ -64,18 +59,19 @@ public class PatInfoMod extends ActionBarActivity {
         // getting patient details from intent
         Intent i = getIntent();
         // getting patient id (pid) from intent
-        String patient_id = i.getStringExtra(TAG_PID);
+        patient_id = i.getStringExtra(TAG_PID);
         
         //PatientList = new ArrayList<HashMap<String, String>>();
         //Loading in Background Thread
         new LoadPatient().execute();
         // Get listview
-        ListView lv = getListView();
+        //ListView lv = getListView();
         
-        Intent in = new Intent();
+   /*     Intent in = new Intent();
         in.putExtra("patient_id",patient_id);
         in.setClass(PatInfoMod.this, PatInfoMod2.class);
         startActivity(in);
+   */     
 	}
     
     //Background Async Task to Get complete patient details
@@ -100,7 +96,7 @@ public class PatInfoMod extends ActionBarActivity {
                     int success;
                     try{
                         // Building Parameters
-                        List<NameValuePair> params = new ArrayList<NameValuePair>();
+                    	List<NameValuePair> params = new ArrayList<NameValuePair>();
                         params.add(new BasicNameValuePair("patient_id", patient_id));
                         // getting patient details by making HTTP request
                         // Note that patient details url will use GET request
@@ -124,17 +120,17 @@ public class PatInfoMod extends ActionBarActivity {
                             txtweight = (TextView) findViewById(R.id.weight);
                             txtleg_length = (TextView) findViewById(R.id.leglen);
                             // display patient data
-                            txtname.setText("ÂßìÂêçÔºö"+patient.getString(TAG_NAME));
+                            txtname.setText("–’√˚"+patient.getString(TAG_NAME));
                             
                              if(patient.getString(TAG_GENDER) == "0")
-                             txtgender.setText("ÊÄßÂà´ÔºöÁî∑");
+                            	 txtgender.setText("–‘±£∫ƒ–");
                              else
-                             txtgender.setText("ÊÄßÂà´ÔºöÂ•≥");
+                            	 txtgender.setText("–‘±£∫≈Æ");
                             
-                            txtage.setText("Âπ¥ÈæÑÔºö"+patient.getString(TAG_AGE)+"Â≤Å");
-                            txtheight.setText("Ë∫´È´òÔºö"+patient.getString(TAG_HEIGHT)+"cm");
-                            txtweight.setText("‰ΩìÈáçÔºö"+patient.getString(TAG_WEIGHT)+"kg");
-                            txtleg_length.setText("ËÖøÈïøÔºö"+patient.getString(TAG_LL)+"cm");
+                            txtage.setText("ƒÍ¡‰:"+patient.getString(TAG_AGE)+"ÀÍ");
+                            txtheight.setText("…Ì∏ﬂ£∫"+patient.getString(TAG_HEIGHT)+"cm");
+                            txtweight.setText("ÃÂ÷ÿ£∫"+patient.getString(TAG_WEIGHT)+"kg");
+                            txtleg_length.setText("Õ»≥§£∫"+patient.getString(TAG_LL)+"cm");
                         }else{
                             // patient with pid not found
                         }
@@ -166,7 +162,8 @@ public class PatInfoMod extends ActionBarActivity {
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
 		if (id == R.id.action_settings) {
-			return true;
+			Intent intent = new Intent(PatInfoMod.this, HomePage2.class);
+			startActivity(intent);
 		}
 		return super.onOptionsItemSelected(item);
 	}

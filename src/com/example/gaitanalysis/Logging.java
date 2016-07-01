@@ -11,6 +11,7 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.content.ContentValues;
 
 public class Logging extends ActionBarActivity {
 	private ActionBar actionbar;
@@ -72,12 +73,12 @@ public class Logging extends ActionBarActivity {
 			}
 		});
 		*/
-		
+		/*
         Intent i = new Intent();
         i.putExtra("patient_id",patient_id);
         i.setClass(Logging.this, HomePage2.class);
         startActivity(i);
-        
+        */
 		registerLogin.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -103,7 +104,8 @@ public class Logging extends ActionBarActivity {
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
 		if (id == R.id.action_settings) {
-			return true;
+			Intent intent = new Intent(Logging.this, HomePage.class);
+			startActivity(intent);
 		}
 		return super.onOptionsItemSelected(item);
 	}

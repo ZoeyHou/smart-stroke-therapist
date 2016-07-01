@@ -1,9 +1,13 @@
 package com.example.gaitanalysis;
 
 import android.support.v7.app.ActionBarActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 
 public class HomePage extends ActionBarActivity {
 
@@ -11,6 +15,24 @@ public class HomePage extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home_page);
+		
+		Button logButton=(Button)findViewById(R.id.button7);
+		logButton.setOnClickListener(new OnClickListener(){
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(HomePage.this, Logging.class);
+				startActivity(intent);
+			}
+		});
+		
+		Button regButton=(Button)findViewById(R.id.button8);
+		regButton.setOnClickListener(new OnClickListener(){
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(HomePage.this, MainActivity.class);
+				startActivity(intent);
+			}
+		});
 	}
 
 	@Override

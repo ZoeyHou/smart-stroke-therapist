@@ -14,7 +14,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.ContentValues;
 import android.content.Intent;
 import android.os.AsyncTask;
 //import android.os.Bundle;
@@ -24,6 +23,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.content.ContentValues;
 
 public class RegisterPat extends ActionBarActivity {
     
@@ -62,7 +62,7 @@ public class RegisterPat extends ActionBarActivity {
         // getting patient id (pid) from intent
         patient_id = i.getStringExtra("patient_id");
         // button click event
-        btnUpdatePatient.setOnClickListener(newView.OnClickListener() {
+        btnUpdatePatient.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // update patient in background thread
@@ -79,7 +79,7 @@ public class RegisterPat extends ActionBarActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pDialog = newProgressDialog(RegisterPat.this);
+            pDialog = new ProgressDialog(RegisterPat.this);
             pDialog.setMessage("Creating..");
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(true);
@@ -97,16 +97,16 @@ public class RegisterPat extends ActionBarActivity {
                 gender = "1";
             }
             // Building Parameters
-            ContentValues content=new ContentValues();
-            content.put("patient_id", patient_id);
-            content.put("age", age);
-            content.put("height", height);
-            content.put("gender", gender);
-            content.put("weight", weight);
+            List<NameValuePair> params = new ArrayList<NameValuePair>();
+            params.add(new BasicNameValuePair("patient_id", patient_id));
+            params.add(new BasicNameValuePair("age", age));
+            params.add(new BasicNameValuePair("height", height));
+            params.add(new BasicNameValuePair("gender", gender));
+            params.add(new BasicNameValuePair("weight", weight));
             // getting JSON Object
             // Note that create patient url accepts POST method
             JSONObject json = jsonParser.makeHttpRequest(url_update_patient,
-                                                         "POST",content);
+                                                         "POST", params);
             // check log cat fro response
             Log.d("Create Response", json.toString());
             // check for success tag
@@ -150,7 +150,8 @@ public class RegisterPat extends ActionBarActivity {
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
 		if (id == R.id.action_settings) {
-			return true;
+			Intent intent = new Intent(RegisterPat.this, HomePage.class);
+			startActivity(intent);
 		}
 		return super.onOptionsItemSelected(item);
 	}

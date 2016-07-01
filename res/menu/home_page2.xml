@@ -8,6 +8,6 @@
         android:orderInCategory="100"
         android:icon="@drawable/home"
         android:title="主页"
-        app:showAsAction="always"/>
+        app:showAsAction="never"/>
 
 </menu>

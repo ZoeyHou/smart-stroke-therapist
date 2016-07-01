@@ -90,7 +90,7 @@ public class dataCollectService extends Service implements SensorEventListener{
 		content.put("acc_y", acc_y);
 		content.put("acc_z", acc_z);
         String url="calculate.php";
-        JSONObject response=JSONParser.makeHttpRequest(url,"POST",content);
+ //       JSONObject response=JSONParser.makeHttpRequest(url,"POST",content);
         Intent intent=new Intent(this,testResult.class);
         startActivity(intent);
 	    } catch (JSONException e) {

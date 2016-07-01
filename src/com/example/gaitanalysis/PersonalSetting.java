@@ -16,7 +16,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.ContentValues;
 import android.content.Intent;
 import android.os.AsyncTask;
 //import android.os.Bundle;
@@ -24,23 +23,26 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.content.ContentValues;
 
 public class PersonalSetting extends ActionBarActivity {
     
-    RadioButton yse;
+    RadioButton yes;
     RadioButton no;
     RadioGroup alarm;
     EditText txtstart_hour;
     EditText txtend_hour;
     EditText txtstart_minute;
     EditText txtend_minute;
-    Textview txtdoctor_advice;
+    TextView txtdoctor_advice;
     RadioGroup sum_fre;
     RadioButton month;
     RadioButton week;
     String pid;
+
     Button btnSave;
     // Progress Dialog
     private ProgressDialog pDialog;
@@ -50,16 +52,16 @@ public class PersonalSetting extends ActionBarActivity {
     private static String url_update_settings = "http://api.androidhive.info/android_connect/update_settings.php";
     private static String url_set_advice = "http://api.androidhive.info/android_connect/get_doctor_advice.php";
     // JSON Node names
-    private static final String TAG_SUCCESS = "success";
-    private static final String TAG_SET = "settings";
-    private static final String TAG_PID = "patient_id";
-    private static final String TAG_ALARM = "alarm_or_not";
-    private static final String TAG_SH = "start_hour";
-    private static final String TAG_EH = "end_hour";
-    private static final String TAG_SM = "start_minute";
-    private static final String TAG_EM = "end_minute";
-    private static final String TAG_DA = "doctor_advice";
-    private static final String TAG_SUM = "summary_frequency";
+    private static String TAG_SUCCESS = "success";
+    private static String TAG_SET = "settings";
+    private static String TAG_PID = "patient_id";
+    private static String TAG_ALARM = "alarm_or_not";
+    private static String TAG_SH = "start_hour";
+    private static String TAG_EH = "end_hour";
+    private static String TAG_SM = "start_minute";
+    private static String TAG_EM = "end_minute";
+    private static String TAG_DA = "doctor_advice";
+    private static String TAG_SUM = "summary_frequency";
     
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +70,7 @@ public class PersonalSetting extends ActionBarActivity {
 		
         // Edit Text
         alarm = (RadioGroup) findViewById(R.id.radioGroup1);
-        yse = (RadioButton) findViewById(R.id.radio0);
+        yes = (RadioButton) findViewById(R.id.radio0);
         no = (RadioButton) findViewById(R.id.radio1);
         txtstart_hour = (EditText) findViewById(R.id.accountInput);
         txtstart_minute = (EditText) findViewById(R.id.EditText01);
@@ -137,19 +139,19 @@ public class PersonalSetting extends ActionBarActivity {
                             
                             // Edit Text
                             alarm = (RadioGroup) findViewById(R.id.radioGroup1);
-                            yse = (RadioButton) findViewById(R.id.radio0);
+                            yes = (RadioButton) findViewById(R.id.radio0);
                             no = (RadioButton) findViewById(R.id.radio1);
                             txtstart_hour = (EditText) findViewById(R.id.accountInput);
                             txtstart_minute = (EditText) findViewById(R.id.EditText01);
                             txtend_hour = (EditText) findViewById(R.id.EditText03);
                             txtend_minute = (EditText) findViewById(R.id.EditText02);
-                            txtdoctor_advice = (Textview) findViewById(R.id.TextView03);
+                            txtdoctor_advice = (TextView) findViewById(R.id.TextView03);
                             sum_fre = (RadioGroup) findViewById(R.id.radioGroup2);
                             week = (RadioButton) findViewById(R.id.radio01);
                             month = (RadioButton) findViewById(R.id.radio02);
                             
                             // display advice
-                           txtdoctor_advice.setText("    鍖荤敓瀹夋帓鐨勮缁冩椂闂达細"+settings.getString(TAG_DA));
+                           txtdoctor_advice.setText("医生的建议频率："+settings.getString(TAG_DA));
                         }else{
                             // patient with pid not found
                         }
@@ -185,10 +187,10 @@ public class PersonalSetting extends ActionBarActivity {
         protected String doInBackground(String... args) {
             // getting updated data from EditTexts
             String alarm_or_not;
-            if(yes.isCheck()){
+            if(yes.isChecked()){
                 alarm_or_not = "1";
             }else{
-                alarm_or_not = "0";
+            	alarm_or_not = "0";
             }
             String start_hour = txtstart_hour.getText().toString().trim();
             String start_minute = txtstart_minute.getText().toString().trim();
@@ -196,25 +198,25 @@ public class PersonalSetting extends ActionBarActivity {
             String end_minute = txtend_minute.getText().toString().trim();
 //            String doctor_advice = null;
             String summary_frequency;
-            if(week.isCheck()){
-                summary_frequency = "0";
+            if(week.isChecked()){
+            	summary_frequency = "0";
             }else{
-                summary_frequency = "1";
+            	summary_frequency = "1";
             }
             // Building Parameters
-            ContentValues content = new ContentValues();
-            content.put(TAG_PID, pid);
-            content.put(TAG_ALARM, alarm_or_not);
-            content.put(TAG_SH, start_hour);
-            content.put(TAG_SM, start_minute);
-            content.put(TAG_EH, end_hour);
-            content.put(TAG_EM, end_minute);
+            List<NameValuePair> params = new ArrayList<NameValuePair>();
+            params.add(new BasicNameValuePair(TAG_PID, pid));
+            params.add(new BasicNameValuePair(TAG_ALARM, alarm_or_not));
+            params.add(new BasicNameValuePair(TAG_SH, start_hour));
+            params.add(new BasicNameValuePair(TAG_SM, start_minute));
+            params.add(new BasicNameValuePair(TAG_EH, end_hour));
+            params.add(new BasicNameValuePair(TAG_EM, end_minute));
 //            params.add(newBasicNameValuePair(TAG_DA, doctor_advice));
-            content.put(TAG_SUM, summary_frequency);
+            params.add(new BasicNameValuePair(TAG_SUM, summary_frequency));
             // sending modified data through http request
             // Notice that update patient url accepts POST method
             JSONObject json = jsonParser.makeHttpRequest(url_update_settings,
-                                                         "POST", content);
+                                                         "POST", params);
             // check json success tag
             try{
                 int success = json.getInt(TAG_SUCCESS);
@@ -254,7 +256,8 @@ public class PersonalSetting extends ActionBarActivity {
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
 		if (id == R.id.action_settings) {
-			return true;
+			Intent intent = new Intent(PersonalSetting.this, HomePage2.class);
+			startActivity(intent);
 		}
 		return super.onOptionsItemSelected(item);
 	}

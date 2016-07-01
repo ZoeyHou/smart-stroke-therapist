@@ -14,7 +14,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.ContentValues;
 import android.content.Intent;
 import android.os.AsyncTask;
 //import android.os.Bundle;
@@ -23,12 +22,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.content.ContentValues;
 
 public class PatInfoMod2 extends ActionBarActivity {
     
     EditText txtname;
-    EditText gender;
-    RadioGroup Gender
     RadioButton man;
     RadioButton woman;
     EditText txtage;
@@ -103,11 +101,11 @@ public class PatInfoMod2 extends ActionBarActivity {
                     int success;
                     try{
                         // Building Parameters
-                        ContentValues content=new ContentValues();
-                        content.put("patient_id", pid);
+                        List<NameValuePair> params = new ArrayList<NameValuePair>();
+                        params.add(new BasicNameValuePair("patient_id", pid));
                         // getting patient details by making HTTP request
                         // Note that patient details url will use GET request
-                        JSONObject json = jsonParser.makeHttpRequest(url_get_pat, "GET", content);
+                        JSONObject json = jsonParser.makeHttpRequest(url_get_pat, "GET", params);
                         // check your log for json response
                         Log.d("Single Patient Details", json.toString());
                         // json success tag
@@ -121,7 +119,7 @@ public class PatInfoMod2 extends ActionBarActivity {
                             // patient with this pid found
                             // Edit Text
                             txtname = (EditText) findViewById(R.id.editName);
-                            Gender = (RadioGroup) findViewById(R.id.radioGroup1);
+
                             man = (RadioButton) findViewById(R.id.radio0);
                             woman = (RadioButton) findViewById(R.id.radio1);
                             txtage = (EditText) findViewById(R.id.editAge);
@@ -132,9 +130,9 @@ public class PatInfoMod2 extends ActionBarActivity {
                             txtname.setText(patient.getString(TAG_NAME));
                             /*
                              if(patient.getString(TAG_GENDER) == "0")
-                             txtgender.setText(鈥滅敺鈥�);
+                             txtgender.setText(鈥滅敺鈥�;
                              else
-                             txtgender.setText(鈥滃コ鈥�);
+                             txtgender.setText(鈥滃コ鈥�;
                              */
                             txtage.setText(patient.getString(TAG_AGE));
                             txtheight.setText(patient.getString(TAG_HEIGHT));
@@ -185,18 +183,18 @@ public class PatInfoMod2 extends ActionBarActivity {
             String weight = txtweight.getText().toString().trim();
             String leg_length = txtleg_length.getText().toString().trim();
             // Building Parameters
-            ContentValues content=new ContentValues();
-            content.put(TAG_PID, pid);
-            content.put(TAG_NAME, patient_name);
-            content.put(TAG_GENDER, gender);
-            content.put(TAG_AGE, age);
-            content.put(TAG_HEIGHT, height);
-            content.put(TAG_WEIGHT, weight);
-            content.put(TAG_LL, leg_length);
+            List<NameValuePair> params = new ArrayList<NameValuePair>();
+            params.add(new BasicNameValuePair(TAG_PID, pid));
+            params.add(new BasicNameValuePair(TAG_NAME, patient_name));
+            params.add(new BasicNameValuePair(TAG_GENDER, gender));
+            params.add(new BasicNameValuePair(TAG_AGE, age));
+            params.add(new BasicNameValuePair(TAG_HEIGHT, height));
+            params.add(new BasicNameValuePair(TAG_WEIGHT, weight));
+            params.add(new BasicNameValuePair(TAG_LL, leg_length));
             // sending modified data through http request
             // Notice that update patient url accepts POST method
             JSONObject json = jsonParser.makeHttpRequest(url_update_pat,
-                                                         "POST", content);
+                                                         "POST", params);
             // check json success tag
             try{
                 int success = json.getInt(TAG_SUCCESS);
@@ -236,7 +234,8 @@ public class PatInfoMod2 extends ActionBarActivity {
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
 		if (id == R.id.action_settings) {
-			return true;
+			Intent intent = new Intent(PatInfoMod2.this, HomePage2.class);
+			startActivity(intent);
 		}
 		return super.onOptionsItemSelected(item);
 	}

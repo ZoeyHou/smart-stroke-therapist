@@ -1,7 +1,6 @@
 package com.example.gaitanalysis;
 
 import android.support.v7.app.ActionBarActivity;
-import android.content.ContentValues;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -24,6 +23,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONException;
 import org.json.JSONObject;
 import android.util.Log;
+import android.content.ContentValues;
 
 public class JSONParser {
 static InputStream is = null;
@@ -34,25 +34,25 @@ public JSONParser() {
 }
 // function get json from url
 // by making HTTP POST or GET mehtod
-public static JSONObject makeHttpRequest(String url, String method, ContentValues content) {
+public JSONObject makeHttpRequest(String url, String method, List<NameValuePair> params) {
     // Making HTTP request
     try{
         // check for request method
         if(method == "POST"){
             // request method is POST
             // defaultHttpClient
-            Default HttpClient httpClient = newDefaultHttpClient();
+            DefaultHttpClient httpClient = new DefaultHttpClient();
             HttpPost httpPost = new HttpPost(url);
-            httpPost.setEntity(new UrlEncodedFormEntity(content));
+            httpPost.setEntity(new UrlEncodedFormEntity(params));
             HttpResponse httpResponse = httpClient.execute(httpPost);
             HttpEntity httpEntity = httpResponse.getEntity();
             is = httpEntity.getContent();
-        }elseif(method == "GET"){
+        }else if(method == "GET"){
             // request method is GET
-            Default HttpClient httpClient = new DefaultHttpClient();
-            String paramString = URLEncodedUtils.format(content, "utf-8");
+            DefaultHttpClient httpClient = new DefaultHttpClient();
+            String paramString = URLEncodedUtils.format(params, "utf-8");
             url += "?"+ paramString;
-            HttpGet httpGet = newHttpGet(url);
+            HttpGet httpGet = new HttpGet(url);
             HttpResponse httpResponse = httpClient.execute(httpGet);
             HttpEntity httpEntity = httpResponse.getEntity();
             is = httpEntity.getContent();
@@ -65,7 +65,7 @@ public static JSONObject makeHttpRequest(String url, String method, ContentValue
         e.printStackTrace();
     }
     try{
-        BufferedReader reader = new BufferedReader(newInputStreamReader(is, "iso-8859-1"), 8);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(is, "iso-8859-1"), 8);
         StringBuilder sb = new StringBuilder();
         String line = null;
         while((line = reader.readLine()) != null) {
@@ -84,4 +84,5 @@ public static JSONObject makeHttpRequest(String url, String method, ContentValue
     }
     // return JSON String
     return jObj;
+}
 }

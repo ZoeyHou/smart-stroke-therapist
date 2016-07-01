@@ -48,15 +48,30 @@
             android:label="@string/basic_info"
             android:theme="@style/Theme.Base.AppCompat.Light" >
         </activity>
-        <activity android:name="com.gait.test.selectLengthType" >
+        <activity 
+            android:name=".selectLengthType" 
+            android:label="@string/title_select_layout"
+            android:theme="@style/Theme.Base.AppCompat.Light">
         </activity>
-        <activity android:name="com.gait.test.chooseModel" >
+        <activity 
+            android:name=".chooseModel"
+            android:label="@string/title_choose_layout"
+            android:theme="@style/Theme.Base.AppCompat.Light">
         </activity>
-        <activity android:name="com.gait.test.pretest" >
+        <activity 
+            android:name=".pretest"
+            android:label="@string/title_pretest_layout"
+            android:theme="@style/Theme.Base.AppCompat.Light" >
         </activity>
-        <activity android:name="com.gait.test.testing" >
+        <activity 
+            android:name=".testing"
+            android:label="@string/login"
+            android:theme="@style/Theme.Base.AppCompat.Light" >
         </activity>
-        <activity android:name="com.gait.test.testResult" >
+        <activity 
+            android:name=".testResult"
+            android:label="@string/login"
+            android:theme="@style/Theme.Base.AppCompat.Light" >
         </activity>
         <activity
             android:name=".StartImage"
@@ -64,7 +79,6 @@
             android:theme="@style/Theme.Base.AppCompat.Light" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -93,9 +107,6 @@
             android:label="@string/title_activity_pat_info_mod2"
             android:theme="@style/Theme.Base.AppCompat.Light" >
         </activity>
-        //Register the dataCollectService service
-        <service android:name="com.example.gaitanalysis.dataCollectService"></service>
-        
     </application>
 
     <!-- Internet Permissions -->
