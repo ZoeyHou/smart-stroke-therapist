@@ -20,7 +20,10 @@ import android.os.AsyncTask;
 //import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
-import android.content.ContentValues;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class PatInfoMod extends ActionBarActivity {
 	private ActionBar actionbar;
@@ -66,12 +69,7 @@ public class PatInfoMod extends ActionBarActivity {
         new LoadPatient().execute();
         // Get listview
         //ListView lv = getListView();
-        
-   /*     Intent in = new Intent();
-        in.putExtra("patient_id",patient_id);
-        in.setClass(PatInfoMod.this, PatInfoMod2.class);
-        startActivity(in);
-   */     
+
 	}
     
     //Background Async Task to Get complete patient details
@@ -96,11 +94,15 @@ public class PatInfoMod extends ActionBarActivity {
                     int success;
                     try{
                         // Building Parameters
-                    	List<NameValuePair> params = new ArrayList<NameValuePair>();
-                        params.add(new BasicNameValuePair("patient_id", patient_id));
+                        Map<String, String> params = new HashMap<String, String>();
+                        params.put("patient_id", patient_id);
+                    	/*List<NameValuePair> params = new ArrayList<NameValuePair>();
+                        params.add(new BasicNameValuePair("patient_id", patient_id));*/
+                        
                         // getting patient details by making HTTP request
                         // Note that patient details url will use GET request
-                        JSONObject json = jsonParser.makeHttpRequest(url_pat_detail, "GET", params);
+                        JSONObject json;
+						json = JSONParser.makeHttpRequest(url_pat_detail, "GET", params);
                         // check your log for json response
                         Log.d("Single Patient Details", json.toString());
                         // json success tag
@@ -131,6 +133,12 @@ public class PatInfoMod extends ActionBarActivity {
                             txtheight.setText("身高："+patient.getString(TAG_HEIGHT)+"cm");
                             txtweight.setText("体重："+patient.getString(TAG_WEIGHT)+"kg");
                             txtleg_length.setText("腿长："+patient.getString(TAG_LL)+"cm");
+                            Intent in = new Intent();
+                            in.putExtra("patient_id",patient_id);
+                            in.setClass(PatInfoMod.this, PatInfoMod2.class);
+                            startActivity(in);
+                            pDialog.dismiss();
+                            finish();
                         }else{
                             // patient with pid not found
                         }

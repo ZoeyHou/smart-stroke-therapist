@@ -27,6 +27,11 @@ import android.widget.TextView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.content.ContentValues;
+import java.io.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class PersonalSetting extends ActionBarActivity {
     
@@ -115,16 +120,19 @@ public class PersonalSetting extends ActionBarActivity {
         protected String doInBackground(String... params) {
             // updating UI from Background Thread
             runOnUiThread(new Runnable() {
-                public void run() {
+                public void run(){
                     // Check for success tag
                     int success;
                     try{
-                        // Building Parameters
-                        List<NameValuePair> params = new ArrayList<NameValuePair>();
-                        params.add(new BasicNameValuePair("patient_id", pid));
+                        // Building Parameters/
+                        Map<String, String> params = new HashMap<String, String>();
+                        params.put("patient_id", pid);
+                        /*List<NameValuePair> params = new ArrayList<NameValuePair>();
+                        params.add(new BasicNameValuePair("patient_id", pid));*/
                         // getting details by making HTTP request
                         // Note that details url will use GET request
-                        JSONObject json = jsonParser.makeHttpRequest(url_set_advice, "GET", params);
+                        JSONObject json;
+						json = JSONParser.makeHttpRequest(url_set_advice, "GET", params);
                         // check your log for json response
                         Log.d("Single Settings", json.toString());
                         // json success tag
@@ -185,6 +193,17 @@ public class PersonalSetting extends ActionBarActivity {
         
         //Saving patient
         protected String doInBackground(String... args) {
+            alarm = (RadioGroup) findViewById(R.id.radioGroup1);
+            yes = (RadioButton) findViewById(R.id.radio0);
+            no = (RadioButton) findViewById(R.id.radio1);
+            txtstart_hour = (EditText) findViewById(R.id.accountInput);
+            txtstart_minute = (EditText) findViewById(R.id.EditText01);
+            txtend_hour = (EditText) findViewById(R.id.EditText03);
+            txtend_minute = (EditText) findViewById(R.id.EditText02);
+            txtdoctor_advice = (TextView) findViewById(R.id.TextView03);
+            sum_fre = (RadioGroup) findViewById(R.id.radioGroup2);
+            week = (RadioButton) findViewById(R.id.radio01);
+            month = (RadioButton) findViewById(R.id.radio02);
             // getting updated data from EditTexts
             String alarm_or_not;
             if(yes.isChecked()){
@@ -204,7 +223,15 @@ public class PersonalSetting extends ActionBarActivity {
             	summary_frequency = "1";
             }
             // Building Parameters
-            List<NameValuePair> params = new ArrayList<NameValuePair>();
+            Map<String, String> params = new HashMap<String, String>();
+            params.put(TAG_PID, pid);
+            params.put(TAG_ALARM, alarm_or_not);
+            params.put(TAG_SH, start_hour);
+            params.put(TAG_SM, start_minute);
+            params.put(TAG_EH, end_hour);
+            params.put(TAG_EM, end_minute);
+            params.put(TAG_SUM, summary_frequency);
+            /*List<NameValuePair> params = new ArrayList<NameValuePair>();
             params.add(new BasicNameValuePair(TAG_PID, pid));
             params.add(new BasicNameValuePair(TAG_ALARM, alarm_or_not));
             params.add(new BasicNameValuePair(TAG_SH, start_hour));
@@ -212,10 +239,10 @@ public class PersonalSetting extends ActionBarActivity {
             params.add(new BasicNameValuePair(TAG_EH, end_hour));
             params.add(new BasicNameValuePair(TAG_EM, end_minute));
 //            params.add(newBasicNameValuePair(TAG_DA, doctor_advice));
-            params.add(new BasicNameValuePair(TAG_SUM, summary_frequency));
+            params.add(new BasicNameValuePair(TAG_SUM, summary_frequency));*/
             // sending modified data through http request
             // Notice that update patient url accepts POST method
-            JSONObject json = jsonParser.makeHttpRequest(url_update_settings,
+            JSONObject json = JSONParser.makeHttpRequest(url_update_settings,
                                                          "POST", params);
             // check json success tag
             try{

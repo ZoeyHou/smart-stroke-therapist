@@ -23,6 +23,11 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.content.ContentValues;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.io.*;
 
 public class Register2 extends ActionBarActivity {
 
@@ -73,19 +78,25 @@ public class Register2 extends ActionBarActivity {
         }
         
         //Creating patient
-        protected String doInBackground(String... args) {
+        protected String doInBackground(String... args){
             String patient_id = inputpatient_id.getText().toString().trim();
             String patient_pwd = inputpatient_pwd.getText().toString();
             String doctor_id = inputdoctor_id.getText().toString().trim();
             // Building Parameters
-            List<NameValuePair> params = new ArrayList<NameValuePair>();
+            Map<String, String> params = new HashMap<String, String>();
+            params.put("patient_id", patient_id);
+            params.put("patient_pwd", patient_pwd);
+            params.put("doctor_id", doctor_id);
+            
+            /*List<NameValuePair> params = new ArrayList<NameValuePair>();
             params.add(new BasicNameValuePair("patient_id", patient_id));
             params.add(new BasicNameValuePair("patient_pwd", patient_pwd));
-            params.add(new BasicNameValuePair("doctor_id", doctor_id));
+            params.add(new BasicNameValuePair("doctor_id", doctor_id));*/
             // getting JSON Object
             // Note that create patient url accepts POST method
-            JSONObject json = jsonParser.makeHttpRequest(url_create_patient,
-                                                         "POST", params);
+            JSONObject json;
+			json = JSONParser.makeHttpRequest(url_create_patient,
+			                                             "POST", params);
             // check log cat fro response
             Log.d("Create Response", json.toString());
             // check for success tag
@@ -97,6 +108,8 @@ public class Register2 extends ActionBarActivity {
                     i.putExtra("patient_id",patient_id);
                     i.setClass(Register2.this, RegisterPat.class);
                     startActivity(i);
+                    pDialog.dismiss();
+                    finish();
                     // closing this screen
                     //finish();
                 } else{

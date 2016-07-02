@@ -78,6 +78,7 @@ public class Logging extends ActionBarActivity {
         i.putExtra("patient_id",patient_id);
         i.setClass(Logging.this, HomePage2.class);
         startActivity(i);
+        finish();
         */
 		registerLogin.setOnClickListener(new OnClickListener() {
 			

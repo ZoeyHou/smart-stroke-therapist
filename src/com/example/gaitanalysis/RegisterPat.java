@@ -24,6 +24,10 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.content.ContentValues;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class RegisterPat extends ActionBarActivity {
     
@@ -97,16 +101,23 @@ public class RegisterPat extends ActionBarActivity {
                 gender = "1";
             }
             // Building Parameters
-            List<NameValuePair> params = new ArrayList<NameValuePair>();
+            Map<String, String> params = new HashMap<String, String>();
+            params.put("patient_id", patient_id);
+            params.put("age", age);
+            params.put("height", height);
+            params.put("gender", gender);
+            params.put("weight", weight);
+            /*List<NameValuePair> params = new ArrayList<NameValuePair>();
             params.add(new BasicNameValuePair("patient_id", patient_id));
             params.add(new BasicNameValuePair("age", age));
             params.add(new BasicNameValuePair("height", height));
             params.add(new BasicNameValuePair("gender", gender));
-            params.add(new BasicNameValuePair("weight", weight));
+            params.add(new BasicNameValuePair("weight", weight));*/
             // getting JSON Object
             // Note that create patient url accepts POST method
-            JSONObject json = jsonParser.makeHttpRequest(url_update_patient,
-                                                         "POST", params);
+            JSONObject json;
+			json = JSONParser.makeHttpRequest(url_update_patient,
+			                                             "POST", params);
             // check log cat fro response
             Log.d("Create Response", json.toString());
             // check for success tag
@@ -119,7 +130,8 @@ public class RegisterPat extends ActionBarActivity {
                     i.setClass(RegisterPat.this, LegLenRecord.class);
                     startActivity(i);
                     // closing this screen 
-                    //finish();
+                    pDialog.dismiss();
+                    finish();
                 } else{ 
                     // failed to create 
                 } 

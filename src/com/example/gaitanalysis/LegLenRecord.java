@@ -20,7 +20,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.content.ContentValues;
-
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 public class LegLenRecord extends ActionBarActivity {
 
     // Progress Dialog
@@ -40,7 +43,6 @@ public class LegLenRecord extends ActionBarActivity {
 		setContentView(R.layout.activity_leg_len_record);
         
         // Edit Text
-        
         inputleg_length = (EditText) findViewById(R.id.editText1);
         
         // Create button
@@ -81,17 +83,23 @@ public class LegLenRecord extends ActionBarActivity {
         }
         
         //
-        protected String doInBackground(String... args) {
+        protected String doInBackground(String... args){
+        	inputleg_length = (EditText) findViewById(R.id.editText1);
             String leg_length = inputleg_length.getText().toString().trim();
             // Building Parameters
-            List<NameValuePair> params = new ArrayList<NameValuePair>();
+            Map<String, String> params = new HashMap<String, String>();
+            params.put("patient_id", patient_id);
+            params.put("leg_length", leg_length);
+            /*List<NameValuePair> params = new ArrayList<NameValuePair>();
             params.add(new BasicNameValuePair("patient_id", patient_id));
             params.add(new BasicNameValuePair("leg_length", leg_length));
+            */
             
             // getting JSON Object
             // Note that create patient url accepts POST method
-            JSONObject json = jsonParser.makeHttpRequest(url_update_leg,
-                                                         "POST", params);
+            JSONObject json;
+				json = JSONParser.makeHttpRequest(url_update_leg,
+				                                             "POST", params);
             // check log cat fro response
             Log.d("Create Response", json.toString());
             // check for success tag
@@ -102,7 +110,8 @@ public class LegLenRecord extends ActionBarActivity {
                     //Intent i = newIntent(getApplicationContext(), AllActivity.class);
                     //startActivity(i);
                     // closing this screen
-                    //finish();
+                	pDialog.dismiss();
+                    finish();
                 } else{
                     // failed to create
                 }

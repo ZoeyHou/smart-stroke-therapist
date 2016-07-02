@@ -23,6 +23,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.content.ContentValues;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class PatInfoMod2 extends ActionBarActivity {
     
@@ -101,11 +105,14 @@ public class PatInfoMod2 extends ActionBarActivity {
                     int success;
                     try{
                         // Building Parameters
-                        List<NameValuePair> params = new ArrayList<NameValuePair>();
-                        params.add(new BasicNameValuePair("patient_id", pid));
+                        Map<String, String> params = new HashMap<String, String>();
+                        params.put("patient_id", pid);
+                        /*List<NameValuePair> params = new ArrayList<NameValuePair>();
+                        params.add(new BasicNameValuePair("patient_id", pid));*/
                         // getting patient details by making HTTP request
                         // Note that patient details url will use GET request
-                        JSONObject json = jsonParser.makeHttpRequest(url_get_pat, "GET", params);
+                        JSONObject json;
+						json = JSONParser.makeHttpRequest(url_get_pat, "GET", params);
                         // check your log for json response
                         Log.d("Single Patient Details", json.toString());
                         // json success tag
@@ -183,7 +190,15 @@ public class PatInfoMod2 extends ActionBarActivity {
             String weight = txtweight.getText().toString().trim();
             String leg_length = txtleg_length.getText().toString().trim();
             // Building Parameters
-            List<NameValuePair> params = new ArrayList<NameValuePair>();
+            Map<String, String> params = new HashMap<String, String>();
+            params.put(TAG_PID, pid);
+            params.put(TAG_NAME, patient_name);
+            params.put(TAG_GENDER, gender);
+            params.put(TAG_AGE, age);
+            params.put(TAG_HEIGHT, height);
+            params.put(TAG_WEIGHT, weight);
+            params.put(TAG_LL, leg_length);
+            /*List<NameValuePair> params = new ArrayList<NameValuePair>();
             params.add(new BasicNameValuePair(TAG_PID, pid));
             params.add(new BasicNameValuePair(TAG_NAME, patient_name));
             params.add(new BasicNameValuePair(TAG_GENDER, gender));
@@ -191,10 +206,12 @@ public class PatInfoMod2 extends ActionBarActivity {
             params.add(new BasicNameValuePair(TAG_HEIGHT, height));
             params.add(new BasicNameValuePair(TAG_WEIGHT, weight));
             params.add(new BasicNameValuePair(TAG_LL, leg_length));
+             */
             // sending modified data through http request
             // Notice that update patient url accepts POST method
-            JSONObject json = jsonParser.makeHttpRequest(url_update_pat,
-                                                         "POST", params);
+            JSONObject json;
+			json = JSONParser.makeHttpRequest(url_update_pat,
+			                                             "POST", params);
             // check json success tag
             try{
                 int success = json.getInt(TAG_SUCCESS);
@@ -203,6 +220,7 @@ public class PatInfoMod2 extends ActionBarActivity {
                     Intent i = getIntent();
                     // send result code 100 to notify about patient update
                     setResult(100, i);
+                    pDialog.dismiss();
                     finish();
                 } else{
                     // failed to update patient

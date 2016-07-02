@@ -23,8 +23,12 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.content.ContentValues;
-
-public class Register_rel extends ActionBarActivity {
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+public
+class Register_rel extends ActionBarActivity {
 
     // Progress Dialog
     private ProgressDialog pDialog;
@@ -75,19 +79,25 @@ public class Register_rel extends ActionBarActivity {
         }
     
         //Creating relative
-        protected String doInBackground(String... args) {
+        protected String doInBackground(String... args){
             String relative_id = inputrelative_id.getText().toString().trim();
             String relative_pwd = inputrelative_pwd.getText().toString();
             String patient_id = inputpatient_id.getText().toString().trim();
             // Building Parameters
-            List<NameValuePair> params = new ArrayList<NameValuePair>();
+            Map<String, String> params = new HashMap<String, String>();
+            params.put("relative_id", relative_id);
+            params.put("relative_pwd", relative_pwd);
+            params.put("patient_id", patient_id);
+            
+            /*List<NameValuePair> params = new ArrayList<NameValuePair>();
             params.add(new BasicNameValuePair("relative_id", relative_id));
             params.add(new BasicNameValuePair("relative_pwd", relative_pwd));
-            params.add(new BasicNameValuePair("patient_id", patient_id));
+            params.add(new BasicNameValuePair("patient_id", patient_id));*/
             // getting JSON Object
             // Note that create relative url accepts POST method
-            JSONObject json = jsonParser.makeHttpRequest(url_create_relative,
-                                                         "POST", params);
+            JSONObject json;
+            json = JSONParser.makeHttpRequest(url_create_relative,
+			        "POST", params);
             // check log cat fro response
             Log.d("Create Response", json.toString());
             // check for success tag
@@ -98,6 +108,7 @@ public class Register_rel extends ActionBarActivity {
                     //Intent i = newIntent(getApplicationContext(), AllActivity.class);
                     //startActivity(i);
                     // closing this screen
+                	pDialog.dismiss();
                     finish();
                 } else{
                     // failed to create

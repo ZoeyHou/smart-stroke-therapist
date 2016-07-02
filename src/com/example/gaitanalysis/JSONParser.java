@@ -6,16 +6,37 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import java.io.BufferedReader;
-import java.io.IOException;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.InetAddress;
+import java.net.Socket;
+import java.net.URL;
+import java.net.URLConnection;
+import java.net.URLEncoder;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+//import java.io.BufferedReader;
+import java.io.IOException;
+//import java.io.InputStream;
+//import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
+import org.apache.http.impl.client.*;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.utils.URLEncodedUtils;
@@ -34,28 +55,85 @@ public JSONParser() {
 }
 // function get json from url
 // by making HTTP POST or GET mehtod
-public JSONObject makeHttpRequest(String url, String method, List<NameValuePair> params) {
+    
+public static JSONObject makeHttpRequest(String url, String method, Map<String, String> params){
+//public JSONObject makeHttpRequest(String url, String method, List<NameValuePair> params) {
     // Making HTTP request
     try{
         // check for request method
         if(method == "POST"){
             // request method is POST
             // defaultHttpClient
-            DefaultHttpClient httpClient = new DefaultHttpClient();
+            /*DefaultHttpClient httpClient = new DefaultHttpClient();
             HttpPost httpPost = new HttpPost(url);
             httpPost.setEntity(new UrlEncodedFormEntity(params));
             HttpResponse httpResponse = httpClient.execute(httpPost);
             HttpEntity httpEntity = httpResponse.getEntity();
-            is = httpEntity.getContent();
+            is = httpEntity.getContent();*/
+            StringBuilder buf = new StringBuilder();
+            Set<Entry<String, String>> entrys = null;
+            // 濡傛灉瀛樺湪鍙傛暟锛屽垯鏀惧湪HTTP璇锋眰浣擄紝褰㈠name=aaa&age=10
+            if (params != null && !params.isEmpty()) {
+                entrys = params.entrySet();
+                for (Map.Entry<String, String> entry : entrys) {
+                    buf.append(entry.getKey()).append("=")
+                    .append(URLEncoder.encode(entry.getValue(), "UTF-8"))
+                    .append("&");
+                }
+                buf.deleteCharAt(buf.length() - 1);
+            }
+            URL url1 = new URL(url);
+            HttpURLConnection conn = (HttpURLConnection) url1.openConnection();
+            conn.setRequestMethod("POST");
+            conn.setDoOutput(true);
+            OutputStream out = conn.getOutputStream();
+            out.write(buf.toString().getBytes("UTF-8"));
+            /*if (headers != null && !headers.isEmpty()) {
+                entrys = headers.entrySet();
+                for (Map.Entry<String, String> entry : entrys) {
+                    conn.setRequestProperty(entry.getKey(), entry.getValue());
+                }
+            }*/
+            int code = conn.getResponseCode();
+            InputStream is = conn.getInputStream();
+            //conn.getResponseCode(); // 涓轰簡鍙戦�佹垚鍔�
+            //return conn;
         }else if(method == "GET"){
             // request method is GET
-            DefaultHttpClient httpClient = new DefaultHttpClient();
+        	/*CloseableHttpClient httpClient = HttpClients.createDefault();
             String paramString = URLEncodedUtils.format(params, "utf-8");
             url += "?"+ paramString;
             HttpGet httpGet = new HttpGet(url);
-            HttpResponse httpResponse = httpClient.execute(httpGet);
+            CloseableHttpResponse httpResponse = httpClient.execute(httpGet);
             HttpEntity httpEntity = httpResponse.getEntity();
-            is = httpEntity.getContent();
+            is = httpEntity.getContent();*/
+            StringBuilder buf = new StringBuilder(url);
+            Set<Entry<String, String>> entrys = null;
+            // 濡傛灉鏄疓ET璇锋眰锛屽垯璇锋眰鍙傛暟鍦║RL涓�
+            if (params != null && !params.isEmpty()) {
+                buf.append("?");
+                entrys = params.entrySet();
+                for (Map.Entry<String, String> entry : entrys) {
+                    buf.append(entry.getKey()).append("=")
+                    .append(URLEncoder.encode(entry.getValue(), "UTF-8"))
+                    .append("&");
+                }
+                buf.deleteCharAt(buf.length() - 1);
+            }
+            URL url1 = new URL(buf.toString());
+            HttpURLConnection conn = (HttpURLConnection) url1.openConnection();
+            conn.setRequestMethod("GET");
+            // 璁剧疆璇锋眰澶�
+            /*if (headers != null && !headers.isEmpty()) {
+                entrys = headers.entrySet();
+                for (Map.Entry<String, String> entry : entrys) {
+                    conn.setRequestProperty(entry.getKey(), entry.getValue());
+                }
+            }*/
+            //conn.getResponseCode();
+            int code = conn.getResponseCode();
+            is = conn.getInputStream();
+            //return conn;
         }
     } catch(UnsupportedEncodingException e) {
         e.printStackTrace();
@@ -65,6 +143,7 @@ public JSONObject makeHttpRequest(String url, String method, List<NameValuePair>
         e.printStackTrace();
     }
     try{
+        
         BufferedReader reader = new BufferedReader(new InputStreamReader(is, "iso-8859-1"), 8);
         StringBuilder sb = new StringBuilder();
         String line = null;
