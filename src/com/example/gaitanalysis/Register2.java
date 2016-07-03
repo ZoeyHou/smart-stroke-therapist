@@ -39,7 +39,7 @@ public class Register2 extends ActionBarActivity {
     EditText inputdoctor_id;
     
     // url to create relative
-    private static String url_create_patient = "http://api.androidhive.info//create_patient.php";
+    private static String url_create_patient = "http://localhost:82/android_connect/create_patient.php";
     // JSON Node names
     private static final String TAG_SUCCESS = "success";
 	@Override

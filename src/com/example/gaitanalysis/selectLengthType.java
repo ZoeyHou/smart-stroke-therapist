@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.RadioButton;
 
 public class selectLengthType extends ActionBarActivity {
 
@@ -15,12 +16,16 @@ public class selectLengthType extends ActionBarActivity {
 		protected void onCreate(Bundle savedInstanceState) {
 			super.onCreate(savedInstanceState);
 			setContentView(R.layout.select_layout);
+			Intent intent=getIntent();
+			final String patient_id=intent.getStringExtra("patient_id");
 			
 			Button next=(Button)findViewById(R.id.button1);
 			next.setOnClickListener(new OnClickListener(){
 				@Override
 				public void onClick(View v) {
-					Intent intent = new Intent(selectLengthType.this, chooseModel.class);
+					Intent intent = new Intent();
+					intent.setClass(selectLengthType.this, chooseModel.class);
+					intent.putExtra("patient_id", patient_id);
 					startActivity(intent);
 				}
 			});		
@@ -45,4 +50,6 @@ public class selectLengthType extends ActionBarActivity {
 			}
 			return super.onOptionsItemSelected(item);
 		}
+		
+		
 }

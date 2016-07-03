@@ -10,17 +10,19 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 
 public class pretest extends ActionBarActivity {
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.pretest_layout);
-		
+		Intent intent=getIntent();
+		final String patient_id=intent.getStringExtra("patient_id");
 		Button next=(Button)findViewById(R.id.button1);
 		next.setOnClickListener(new OnClickListener(){
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(pretest.this, testResult.class);
+				Intent intent = new Intent();
+				intent.setClass(pretest.this, testing.class);
+				intent.putExtra("patient_id", patient_id);
 				startActivity(intent);
 			}
 		});		
