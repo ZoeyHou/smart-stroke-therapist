@@ -36,7 +36,7 @@ import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.CloseableHttpResponse;
+//import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.utils.URLEncodedUtils;
@@ -72,7 +72,7 @@ public static JSONObject makeHttpRequest(String url, String method, Map<String, 
             is = httpEntity.getContent();*/
             StringBuilder buf = new StringBuilder();
             Set<Entry<String, String>> entrys = null;
-            // 濡傛灉瀛樺湪鍙傛暟锛屽垯鏀惧湪HTTP璇锋眰浣擄紝褰㈠name=aaa&age=10
+            // 婵″倹鐏夌�涙ê婀崣鍌涙殶閿涘苯鍨弨鎯ф躬HTTP鐠囬攱鐪版担鎿勭礉瑜般垹顩ame=aaa&age=10
             if (params != null && !params.isEmpty()) {
                 entrys = params.entrySet();
                 for (Map.Entry<String, String> entry : entrys) {
@@ -96,7 +96,7 @@ public static JSONObject makeHttpRequest(String url, String method, Map<String, 
             }*/
             int code = conn.getResponseCode();
             InputStream is = conn.getInputStream();
-            //conn.getResponseCode(); // 涓轰簡鍙戦�佹垚鍔�
+            //conn.getResponseCode(); // 娑撹桨绨￠崣鎴︼拷浣瑰灇閸旓拷
             //return conn;
         }else if(method == "GET"){
             // request method is GET
@@ -109,7 +109,7 @@ public static JSONObject makeHttpRequest(String url, String method, Map<String, 
             is = httpEntity.getContent();*/
             StringBuilder buf = new StringBuilder(url);
             Set<Entry<String, String>> entrys = null;
-            // 濡傛灉鏄疓ET璇锋眰锛屽垯璇锋眰鍙傛暟鍦║RL涓�
+            // 婵″倹鐏夐弰鐤揈T鐠囬攱鐪伴敍灞藉灟鐠囬攱鐪伴崣鍌涙殶閸︹晳RL娑擄拷
             if (params != null && !params.isEmpty()) {
                 buf.append("?");
                 entrys = params.entrySet();
@@ -123,7 +123,7 @@ public static JSONObject makeHttpRequest(String url, String method, Map<String, 
             URL url1 = new URL(buf.toString());
             HttpURLConnection conn = (HttpURLConnection) url1.openConnection();
             conn.setRequestMethod("GET");
-            // 璁剧疆璇锋眰澶�
+            // 鐠佸墽鐤嗙拠閿嬬湴婢讹拷
             /*if (headers != null && !headers.isEmpty()) {
                 entrys = headers.entrySet();
                 for (Map.Entry<String, String> entry : entrys) {

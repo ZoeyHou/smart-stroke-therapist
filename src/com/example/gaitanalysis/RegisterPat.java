@@ -42,7 +42,7 @@ public class RegisterPat extends ActionBarActivity {
     RadioButton woman;
     EditText inputweight;
     // url to update patient info
-    private static String url_update_patient = "http://api.androidhive.info/android_connect/update_patient_detail.php";
+    private static String url_update_patient = "http://119.29.245.107:81/GaitAnalysis/android_connect/update_patient_detail.php";
     // JSON Node names
     private static final String TAG_SUCCESS = "success";
     

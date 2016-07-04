@@ -64,7 +64,7 @@
         android:layout_alignBottom="@+id/button4"
         android:layout_alignLeft="@+id/button2"
         android:background="@color/blue"
-        android:text="偏袒知识" />
+        android:text="偏瘫知识" />
 
     <TextView
         android:id="@+id/textView1"

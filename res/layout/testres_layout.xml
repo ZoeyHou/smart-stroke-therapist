@@ -1,19 +1,47 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
-   
-    
-    <CheckedTextView
-        android:id="@+id/checkedTextView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="测试中……" 
-        android:textSize="48dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginTop="100dp"
-        />
-
-</LinearLayout>
+﻿<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+     xmlns:tools="http://schemas.android.com/tools" 
+     android:layout_width="match_parent" 
+     android:layout_height="match_parent" 
+     android:paddingBottom="@dimen/activity_vertical_margin" 
+     android:paddingLeft="@dimen/activity_horizontal_margin" 
+     android:paddingRight="@dimen/activity_horizontal_margin" 
+     android:paddingTop="@dimen/activity_vertical_margin" 
+     tools:context="com.example.gaitanalysis.testResult" > 
+ 
+ 
+     <TextView 
+         android:id="@+id/textView1" 
+         android:layout_width="wrap_content" 
+         android:layout_height="wrap_content" 
+         android:layout_alignParentLeft="true" 
+         android:layout_alignParentTop="true" 
+         android:layout_marginLeft="32dp" 
+         android:layout_marginTop="35dp" 
+         android:text="测试完成" 
+         android:textAppearance="?android:attr/textAppearanceMedium" 
+         android:textSize="30dp" /> 
+ 
+ 
+     <Button 
+         android:id="@+id/nextStep" 
+         android:layout_width="90dp" 
+         android:layout_height="wrap_content" 
+         android:layout_alignBaseline="@+id/reTest" 
+         android:layout_alignBottom="@+id/reTest" 
+         android:layout_toRightOf="@+id/textView1" 
+         android:background="@drawable/button_border" 
+         android:text="下一步" /> 
+ 
+ 
+     <Button 
+         android:id="@+id/reTest" 
+         android:layout_width="90dp" 
+         android:layout_height="wrap_content" 
+         android:layout_alignLeft="@+id/textView1" 
+         android:layout_alignParentBottom="true" 
+         android:layout_marginBottom="51dp" 
+         android:background="@drawable/button_border" 
+         android:text="重新测试" /> 
+ 
+ 
+ </RelativeLayout> 

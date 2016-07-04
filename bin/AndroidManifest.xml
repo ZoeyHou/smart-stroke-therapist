@@ -77,15 +77,15 @@
             android:name=".StartImage"
             android:label="@string/title_activity_start_image"
             android:theme="@style/Theme.Base.AppCompat.Light" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".HomePage"
             android:label="@string/title_activity_home_page"
             android:theme="@style/Theme.Base.AppCompat.Light" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".HomePage2"
@@ -107,6 +107,8 @@
             android:label="@string/title_activity_pat_info_mod2"
             android:theme="@style/Theme.Base.AppCompat.Light" >
         </activity>
+         //Register the dataCollectService service
+        <service android:name="com.example.gaitanalysis.dataCollectService"></service>
     </application>
 
     <!-- Internet Permissions -->

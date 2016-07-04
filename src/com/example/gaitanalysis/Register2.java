@@ -15,7 +15,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
-//import android.os.Bundle;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -39,7 +39,7 @@ public class Register2 extends ActionBarActivity {
     EditText inputdoctor_id;
     
     // url to create relative
-    private static String url_create_patient = "http://localhost:82/android_connect/create_patient.php";
+    private static String url_create_patient = "http://119.29.245.107:81/GaitAnalysis/android_connect/create_patient.php";
     // JSON Node names
     private static final String TAG_SUCCESS = "success";
 	@Override
@@ -95,14 +95,14 @@ public class Register2 extends ActionBarActivity {
             // getting JSON Object
             // Note that create patient url accepts POST method
             JSONObject json;
-			json = JSONParser.makeHttpRequest(url_create_patient,
-			                                             "POST", params);
+			json = JSONParser.makeHttpRequest(url_create_patient,"POST", params);
             // check log cat fro response
             Log.d("Create Response", json.toString());
             // check for success tag
             try{
                 int success = json.getInt(TAG_SUCCESS);
                 if(success == 1) {
+                	pDialog.setMessage("Successfully created");
                     // successfully created
                     Intent i = new Intent();
                     i.putExtra("patient_id",patient_id);
@@ -114,6 +114,7 @@ public class Register2 extends ActionBarActivity {
                     //finish();
                 } else{
                     // failed to create
+                	pDialog.setMessage("Failed to create");
                 }
             } catch(JSONException e) {
                 e.printStackTrace();

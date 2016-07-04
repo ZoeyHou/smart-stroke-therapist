@@ -33,7 +33,7 @@ public class LegLenRecord extends ActionBarActivity {
     EditText inputleg_length;
     
     // url to update patient info
-    private static String url_update_leg = "http://api.androidhive.info/android_connect/update_patient_leg_length.php";
+    private static String url_update_leg = "http://119.29.245.107:81/GaitAnalysis/android_connect/update_patient_leg_length.php";
     // JSON Node names
     private static final String TAG_SUCCESS = "success";
     
@@ -57,11 +57,10 @@ public class LegLenRecord extends ActionBarActivity {
             public void onClick(View view) {           
                 // update patient in background thread
                 new UpdateLeg().execute();
-     /*           //Jump to Page HomePage2
                 Intent intent = new Intent();
+                intent.putExtra("patient_id", patient_id);
                 intent.setClass(LegLenRecord.this, HomePage2.class);
     			startActivity(intent);
-    */
     		
             }
         });
